@@ -1,33 +1,26 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2513
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww10800\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Viraj Doshi</title>
+</head>
 
-\f0\fs24 \cf0 <DOCTYPE html>\
-<html>\
-<head>\
-	<title>Viraj Doshi</title>\
-</head>\
-\
-<body>\
-	<p>my website is - <a href=\'93https://virajdoshi.glitch.me/\'94>HERE</a></p>\
-	<p>\
-		I am using glitch because github pages doesn\'92t allow using servers. It has to be a\
-		static website\
-	</p>\
-	<script>\
-		setInterval(async () => \{\
-        			const url = "https://virajdoshi.glitch.me/qwerty"\
-        			const result = await fetch(url, \{\
-            			method: "GET",\
-            			headers: \{\
-             			 "Content-Type": "application/json",\
-           		 	\},\
-         			\}).then((res) => res.json());\
-       			console.log(result);\
-     		\}, 300000) //this is 5 mins\
-	</script>\
-</body>\
-</html>}
+<body>
+	<p>my website is - <a href='https://virajdoshi.glitch.me/'>HERE</a></p>
+	<p>
+		I am using glitch because github pages doesn't allow using servers. It has to be a
+		static website
+	</p>
+	<script>
+		setInterval(async () => {
+        			const url = "https://virajdoshi.glitch.me/qwerty"
+        			const result = await fetch(url, {
+            			method: "GET",
+            			headers: {
+             			 "Content-Type": "application/json",
+           		 	},
+         			}).then((res) => res.json());
+       			console.log(result);
+     		}, 300000) //this is 5 mins
+	</script>
+</body>
+</html>
