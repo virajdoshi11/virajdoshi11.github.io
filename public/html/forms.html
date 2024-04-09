@@ -1,0 +1,98 @@
+<!-- 
+1. Shuffle ques and answers option
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-825V9LPDTK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-825V9LPDTK');
+</script>
+    
+     <meta charset="UTF-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <meta name="description" content="Google Forms Clone"/>
+     <title>Google Forms Clone</title>
+ 
+     <!-- <link rel="manifest" href="manifest.json" /> -->
+     <link rel="stylesheet" href="/css/forms.css" />
+     <!-- Bottstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"/>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+     <!-- Google Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com" />
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+     <link href="https://fonts.googleapis.com/css2?family=Unbounded&display=swap" rel="stylesheet"/>
+ 
+     <!-- my favicon -->
+     <link rel="icon" href="https://cdn.glitch.global/2d4882ca-9b62-4da8-b91c-c07f71a3bcc7/VirajDoshiLogo2.png?v=1678059876222">
+ 
+     <!-- PWA manifest -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    
+     <!-- iOS support -->
+     <!-- <link rel="apple-touch-icon" href="images/icons/icon-72x72.png" />
+   <link rel="apple-touch-icon" href="images/icons/icon-96x96.png" />
+   <link rel="apple-touch-icon" href="images/icons/icon-128x128.png" />
+   <link rel="apple-touch-icon" href="images/icons/icon-144x144.png" />
+   <link rel="apple-touch-icon" href="images/icons/icon-152x152.png" />
+   <link rel="apple-touch-icon" href="images/icons/icon-192x192.png" />
+   <link rel="apple-touch-icon" href="images/icons/icon-384x384.png" />
+   <link rel="apple-touch-icon" href="images/icons/icon-512x512.png" />
+   <meta name="apple-mobile-web-app-status-bar" content="#ff9900" />
+   <meta name="theme-color" content="#ff9900" /> -->
+   </head>
+   
+   <body style="background-color: #f0ebf8">
+     
+ <!-- rgb(103, 58, 183) -->
+     
+     <form style="">
+       <div class="container title-card" style="min-width: 365px; width: 50%">
+         <div style="margin: 0 24px;">
+           <input type="text" placeholder="Untitled form" class="form-title">
+           <textarea style="margin-bottom: 20px; margin-top: 8px; resize: none" rows="1" type="text" placeholder="Form description"></textarea>
+         </div>
+       </div>
+       
+       <div class="container card" style="min-width: 365px; width: 50%; border: none;">
+         <div id="q1" style="margin: 7px 24px 20px 24px">
+           <textarea style="resize: none" rows="1" type="text" placeholder="Untitled Question" class="question"></textarea>
+           <div class="row" style="margin: 12px 0 0 0;">
+ <!--             <input type="radio" class="col-1" style="margin: 0 12px 0 0; width: 20px;" disabled> -->
+             <i class="fa-regular fa-circle col-auto" style="color: #d1d1d1; margin: 2px 12px 0 0; padding: 0"></i>
+             <input type="text" placeholder="Option 1" class="option col" style="padding: 0 0 0 0;">
+           </div>
+           <button onclick="addOption('q1')" style="border-radius: 5px; border: none; background-color: rgb(103, 58, 183); color: white; padding: 5px 12px; font-weight: bold; margin-top: 12px; font-size: 11pt">
+             Add Option
+           </button>
+         </div>
+       </div>
+     </form>
+     
+     <script>
+       const text_area = document.getElementsByTagName("textarea");
+       
+       for(var i = 0; i < text_area.length; i++) {
+         text_area[i].addEventListener('input', autoResize, false);
+       }
+       
+       function autoResize() {
+         this.style.height = 'auto';
+         this.style.height = this.scrollHeight + 'px';
+       }
+       
+       function addOption(qID) {
+         // console.log(qID)
+         console.log(document.getElementById("" + qID));
+       }
+     </script>
+   </body>
+ </html>

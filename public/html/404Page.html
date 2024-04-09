@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-825V9LPDTK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-825V9LPDTK');
+</script>
+    
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Viraj Doshi's Portfolio website. This is portfolio
+    website that showcases all the skills, projects and experiences of myself. You can
+    download my resume and get my contact details here."/>
+    <title>Viraj Portfolio Website</title>
+
+    <link rel="stylesheet" href="css/projects.css">
+    <!-- Bottstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded&display=swap" rel="stylesheet"/>
+
+    <!-- my favicon -->
+    <link rel="icon" href="https://cdn.glitch.global/2d4882ca-9b62-4da8-b91c-c07f71a3bcc7/VirajDoshiLogo2.png?v=1678059876222">
+
+    <!-- PWA manifest -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    
+    <!-- iOS support -->
+    <!-- <link rel="apple-touch-icon" href="images/icons/icon-72x72.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-96x96.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-128x128.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-144x144.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-152x152.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-192x192.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-384x384.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-512x512.png" />
+  <meta name="apple-mobile-web-app-status-bar" content="#ff9900" />
+  <meta name="theme-color" content="#ff9900" /> -->
+    
+    <style>
+      :root {
+        --primary: #ff9900;
+      }
+      .errVid{
+        min-width: 100vw;
+        min-height: 100vh;
+        width: auto;
+        height: auto;
+        overflow-y: hidden;
+      }
+      .errBox {
+        position: absolute;
+        border-radius: 5px;
+        background-color: transparent;
+        width: 50%; height: 25%;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .errTxt {
+        font-size: 25px;
+        color: var(--primary);
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+        margin: 0;
+      }
+      .back {
+        position: absolute;
+        bottom: 0; right: 0;
+        margin: 0 12px 5px 0;
+        color: var(--primary);
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div style="position: relative; height: 100vh; overflow: hidden">
+      <video class="errVid" src="https://cdn.glitch.global/2d4882ca-9b62-4da8-b91c-c07f71a3bcc7/Error404.mp4?v=1678562153468" loop autoplay muted></video>
+       <div class="errBox">
+         <p class="errTxt">
+          You are escaping the Simulation
+        </p>
+        <a class="back" href="/">
+          go back
+        </a>
+      </div>
+<!-- this is the img of the rainbow error screen -->
+<!-- <img style="width: 100vw; height: 100vh" src="https://cdn.glitch.global/2d4882ca-9b62-4da8-b91c-c07f71a3bcc7/505f15d2-59b1-4ac1-8d68-6af8df136ed3.image.png?v=1678559079764"/> -->
+    </div>
+    
+    <button class="btn btn-floating" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+    
+    <script src="/js/utilities.js"></script>
+    <script>
+      function updateColor() {
+        let value = getCookie("color");
+        if (value == null) {
+          value = "#ff9900";
+          setCookie("color", "#ff9900");
+        }
+        document.documentElement.style.setProperty("--primary", value);
+      }
+      
+      window.onload = function() {
+        updateColor();
+        
+      // if(getCookie("mode") == 1) {
+      //   document.documentElement.style.setProperty("--secondary", "#ffffff");
+      //   document.getElementsByTagName("body")[0].setAttribute('data-bs-theme', 'white');
+      // } else if (getCookie("mode") == 0) {
+      //   document.documentElement.style.setProperty("--secondary", "#000000");
+      //   document.getElementsByTagName("body")[0].setAttribute('data-bs-theme', 'black');
+      // }
+    }
+    </script>
+  </body>
+</html>

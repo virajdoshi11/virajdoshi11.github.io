@@ -1,0 +1,677 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Unbounded', cursive;
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: var(--oppo-body-color);
+  background: var(--primary);
+}
+
+::selection {
+  color: var(--oppo-body-color);
+  background: var(--primary);
+}
+
+:root {
+  --primary: #ff9900;
+  /* --primary: #e94b3c; */
+  /* --primary: #f2aa4c; */
+  /* --primary: #333d79; */
+  /* --primary: #1a75aa; */ /*last one*/
+  /* --dark: #101820; */ /*18*/
+  --black: #000000;
+  --white: #ffffff;
+  --secondary: #000000;
+}
+
+[data-bs-theme="white"] {
+  --bs-body-color: black;/*var(--bs-white);*/
+  --oppo-body-color: white;
+/*   --bs-body-color-rgb: #{to-rgb($white)}; */
+}
+[data-bs-theme="black"] {
+  --bs-body-color: white;
+  --oppo-body-color: black;
+}
+
+#loading h1 {
+  position: relative;
+  font-size: 7vw;
+  color: #555555;
+  text-transform: uppercase;
+  border-bottom: 16px solid #555555;
+  width: 55vw;
+  display: block;
+}
+#loading h1::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  white-space: nowrap;
+  color: var(--primary);
+  overflow: hidden;
+  border-bottom: 16px solid var(--primary);
+  animation: animate 2s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+#loader-wrapper {
+  width: 100%; height: 100%;
+  position: fixed;
+  top: 0; left: 0;
+  /* background-color: #242f3fff; */
+  background-color: grey;
+  z-index: 99999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sections {
+  width: 100%;
+  background-color: var(--secondary);
+  display: flex;
+  align-items: center;
+  padding: 100px 0 100px 0;
+}
+
+#home-nav {
+  width: 100%;
+  /* height: 100vh; */
+  background: linear-gradient(90deg, var(--secondary) 80%, var(--primary) 20%);
+}
+
+#navbar {
+  background: linear-gradient(90deg, var(--secondary) 80%, var(--primary) 20%);
+}
+
+#logo {
+  margin-left: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--primary);
+  letter-spacing: 2px;
+}
+
+#logo2 {
+  margin-left: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--primary);
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.navbar-nav {
+  margin-left: 0px;
+  margin-top: 6px;
+}
+
+.nav-item .nav-link {
+  margin-left: 10px;
+  font-weight: bold;
+  color: var(--secondary) * 255;
+  font-size: 16px;
+  text-shadow: 1px 1px 1px var(--primary);
+  position: relative; /*from that website linked below */
+  letter-spacing: 2px;
+  transition: 0.4s ease;
+}
+
+/* from this website: https://tobiasahlin.com/blog/css-trick-animating-link-underlines/ */
+.nav-item .nav-link::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.nav-item .nav-link:hover::before {
+  transform: scaleX(1);
+}
+/* from the website */
+
+.nav-item .nav-link:hover {
+  color: var(--primary);
+  /* border-bottom: 2px solid #ff9900; */
+}
+
+.active {
+  color: var(--primary) !important;
+}
+
+#btncv {
+  background: transparent;
+  border: 2px solid black;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 3vw;
+  transition: 0.4s ease;
+  padding: 0 5px 0 5px;
+}
+
+#btncv:hover {
+  background-color: black;
+  color: var(--primary);
+}
+
+@media screen and (max-width:991px) {
+  #btncv {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    margin-left: 10px;
+  }
+
+  #logo2 {
+    display: none;
+  }
+}
+
+#btn-back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  color: black;
+  background-color: var(--primary);
+}
+
+.colorPicker {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  border: 1px solid black;
+  /* border-radius: 50%; */
+}
+
+.section-title {
+/*   color: white; */
+  font-weight: bold;
+  border-bottom: 2px solid var(--primary);
+}
+
+#home {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  /* z-index: 0; */
+}
+
+#home .img {
+  flex: 1 1 400px;
+}
+
+#home .img img {
+  width: 76%;
+  margin-left: 30px;
+}
+
+#home .content {
+  flex: 1 1 400px;
+  margin-left: 45px;
+  overflow: hidden;
+}
+
+#home .content h5 {
+/*   color: white; */
+  letter-spacing: 3px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#home .content h3 {
+  font-size: 50px;
+/*   color: white; */
+  margin-bottom: 14px;
+}
+
+#home h2 span {
+/*   color: white; */
+  font-size: 40px;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+#home .content h3 span {
+  color: var(--primary);
+  font-weight: bold;
+  /* background-color: #ffffff22;
+  background-image: url(./assets/images/code.avif); */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  /* background: linear-gradient(to right, red, orange, primary, green, blue, indigo, violet); */
+  /* background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  border-radius: 12px;
+  padding: 0 5px 0 5px;
+}
+
+.changecontent::after {
+  content: ' ';
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 40px;
+  animation: changetext 15s infinite linear;
+}
+
+/* @keyframes changetext {
+  0%{content: "Web Developer"}
+  10%{content: "MobiLE App Developer"}
+  20%{content: "Software Engineer"}
+  30%{content: "Requirements Engineer"}
+  40%{content: "Project Manager"}
+  50%{content: "DevOps Engineer"}
+  60%{content: "Game Developer"}
+  70%{content: "iOS Developer"}
+  80%{content: "Backend Developer"}
+  90%{content: "Frontend Developer"}
+  100%{content: "Team Lead"}
+} */
+
+@keyframes changetext {
+  0% {content: "Team Lead"}
+  20%{content: "Web Developer"}
+  40%{content: "MobiLE App Developer"}
+  60%{content: "Project Manager"}
+  80%{content: "Full Stack Developer"}
+  100%{content: "Team Lead"}
+}
+
+.darkbtn {
+  min-width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: var(--primary);
+  background: transparent;
+  border: 2px solid var(--primary);
+  transition: 0.4s ease;
+  cursor: pointer;
+  padding: 0 5px 0 5px;
+}
+
+#btn1 {
+  letter-spacing: 3px;
+  margin-top: 100px;
+}
+
+#btn1:hover {
+  background-color: var(--primary);
+  color: black;
+}
+
+@media screen and (max-width:844px) {
+  #home-nav {
+    /* height: 146vh; */
+    background: var(--secondary);
+  }
+  #home .content {
+    margin-top: 50px;
+  }
+  #navbar {
+    background: var(--secondary);
+  }
+}
+
+/* https://www.youtube.com/watch?v=IutH0S9bGR4&t=474s */
+/* 28:40 ^ */
+@media screen and (max-width:650px) {
+  /* #home-nav {
+    height: 130vh;
+  } */
+  .img img {
+    margin-top: 30px;
+  }
+}
+
+/* @media screen and (max-width:360px) {
+  #home-nav {
+    height: 110vh;
+  }
+} */
+
+/* about section */
+#about {
+  padding: 120px 0 120px 0;
+}
+#about .card img {
+  background-color: var(--primary);
+  border: 2px solid black;
+}
+#about p {
+  text-align: justify;
+  text-justify: inter-word;
+  /* color: white; */
+  /* letter-spacing: 1px; */
+  word-spacing: 3px;
+}
+.focus {
+  font-weight: bold;
+  color: var(--primary);
+}
+#about p a {
+  text-decoration: none;
+  color: var(--primary);
+}
+.one-word {
+  white-space: nowrap;
+}
+@media screen and (max-width: 430px){
+  .one-word {
+    white-space: normal;
+  }
+}
+#btncv2 {
+  margin-top: 20px;
+}
+#btncv2:hover {
+  background-color: var(--primary);
+  color: black;
+}
+/* @media screen and (max-width:767px){
+  #about {
+    height: 120vh;
+  }
+}
+
+@media screen and (max-width:500px){
+  #about {
+    height: 170vh;
+  }
+} */
+/* about section */
+
+/* --------------------------------------------------------------------- */
+
+/* skills section */
+#skills p {
+  text-align: justify;
+  text-justify: inter-word;
+  word-spacing: 3px;
+}
+.tagcloud {
+  display: inline-block;
+  /* top: 100px; */
+  /* right: 30%; */
+  /* margin-right: 200px; */
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.tagcloud--item:hover {
+  color: white;
+}
+/* skills section */
+
+/* --------------------------------------------------------------------- */
+
+/* projects section */
+
+/* #projects {
+  width: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  padding: 100px 0 100px 0;
+} */
+.proj-card {
+  position: relative;
+  height: 350px;
+  width: 80%; /*dont know why this is not working hence added this in html*/
+}
+.proj-img-left {
+  width: 55%; height: 350px;
+  position: absolute;
+}
+.proj-img-right {
+  width: 45%; height: 350px;
+  position: absolute;
+}
+.project-right {
+  padding-top: 20px;
+  position: absolute;
+  right: 0;
+}
+.project-left {
+  padding-top: 20px;
+  position: absolute;
+}
+.proj-title-right {
+  text-align: end;
+}
+.proj-title-left {
+  text-align: start;
+}
+.proj-des-right {
+  background-color: #232323;
+  border-radius: 5px;
+  margin: 20px 0 0 0;
+  padding: 14px 30px 14px 30px;
+  /* max-width: 60%; */
+}
+.proj-des-left {
+  background-color: #232323;
+  border-radius: 5px;
+  margin: 20px 0 0 0;
+  padding: 14px 30px 14px 30px;
+  /* max-width: 60%; */
+}
+.tech-stack-right {
+  margin-top: 20px;
+  font-size: 12px;
+  word-spacing: 5px;
+}
+.tech-stack-left {
+  margin-top: 20px;
+  font-size: 12px;
+  word-spacing: 5px;
+}
+.proj-des-sm-right {
+  margin: 0 18px;
+}
+.proj-des-sm-left {
+  margin: 0 18px;
+}
+/* projects section */
+
+/* --------------------------------------------------------------------- */
+
+/* experience section */
+/* #experience {
+  width: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  padding: 100px 0 100px 0;
+} */
+
+.exp {
+  margin-bottom: 50px;
+}
+
+.vrtcl_line {
+  width: 20px;
+  border-right: 2px solid #ffffff;
+  margin-bottom: 20px;
+  border-color: grey;
+}
+
+.company {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.role {
+  text-decoration: underline;
+/*   font-weight: 0; */
+}
+/* experience section */
+
+/* contact section */
+/* #contact {
+  width: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  padding: 100px 0 100px 0;
+} */
+input:focus, textarea:focus {
+  outline-width: 0;
+}
+#contact input {
+  width: 70%;
+  min-width: 330px;
+  margin-top: 30px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--primary);
+  color: var(--primary);
+}
+#contact textarea {
+  background: transparent;
+  border: 2px solid var(--primary);
+  margin-top: 20px;
+  resize: none;
+  color: var(--primary);
+  border-radius: 5px;
+  padding-left: 5px;
+  width: 70%;
+  min-width: 330px;
+}
+#btncontact {
+  width: 50%;
+  height: 30px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 5px;
+  margin-top: 30px;
+  transition: 0.4s ease;
+}
+#btncontact:hover {
+  color: black;
+  background: var(--primary);
+}
+#contact i {
+  color: var(--primary);
+  margin-top: 30px;
+  font-size: 16px;
+}
+#contact i a {
+  text-decoration: none;
+  color: var(--primary);
+}
+.footer {
+  text-align: center;
+  font-weight: bold;
+  padding: 14px 0;
+  background-color: var(--secondary);
+  font-size: 14px;
+}
+/* contact section */
+
+/* .form-switch .form-check-input {
+    height: 24px;
+    width: 48px;
+} */
+.form-switch .form-check-input {
+  background-color: #808080;
+/*     border: none; */
+  border-color: white;
+  width: 700px;
+  height: 20px;
+  margin-right: 80px;
+/*     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,1.0)'/></svg>"); */
+}
+.form-switch .form-check-input:focus {
+  border-color: rgba(0, 0, 0, 0.25);
+  outline: 0;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  border-color: white;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(0,0,0,0.25)'/></svg>");
+}
+.form-switch .form-check-input:checked {
+  background-color: #101820;
+  border-color: white;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,1.0)'/></svg>");
+}
+
+.rotateable {
+    transition: all 100ms;
+}
+
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: var(--primary); /* Black background color */
+  /*color: #ffffff; *//* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#snackbar.emailError {
+  background-color: red;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}

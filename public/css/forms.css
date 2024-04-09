@@ -1,0 +1,62 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  margin-bottom: 20px; /*idk why this doesnt work*/
+  border-bottom: 1.5px solid #DCD7D7;
+  padding: 0 0 0 0;
+  font-size: 12pt;
+  resize: none;
+  overflow: hidden;
+}
+
+.title-card {
+  background-color: white;
+  border-radius: 8px;
+  border-top: 10px solid rgb(103, 58, 183);
+  margin-top: 12px
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  border: none;  /*This doesnt work idk why*/
+  margin-top: 12px;
+}
+
+.form-title {
+  border: none;
+  font-size: 24pt;
+  width: 100%;
+  outline: none;
+  border-bottom: 1.5px solid #DCD7D7;
+  padding: 0 0 5px 0;
+  margin: 12px 0 5px 0;
+}
+
+.question {
+  border: none;
+  font-size: 14pt;
+  width: 100%;
+  outline: none;
+  border-bottom: 1.5px solid #DCD7D7;
+  padding: 0 0 0px 0;  /*5 both here and below*/
+  margin: 12px 0 0px 0;
+}
+
+.option {
+  border: none;
+  font-size: 11pt;
+  width: 50%;
+  outline: none;
+  border-bottom: 1.5px solid #DCD7D7;
+  padding: 0 0 5px 0;
+  margin: 12px 0 5px 0;
+}
