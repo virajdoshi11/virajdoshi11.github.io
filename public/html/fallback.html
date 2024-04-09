@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-825V9LPDTK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-825V9LPDTK');
+</script>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Viraj Doshi's Portfolio website. This is portfolio
+  website that showcases all the skills, projects and experiences of myself. All of my
+  projects are displayed here.">
+  
+  <link rel="stylesheet" href="/css/projects.css">
+  <!-- Bottstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded&display=swap" rel="stylesheet">
+  
+  <!-- my favicon -->
+  <link rel="icon" href="https://cdn.glitch.global/2d4882ca-9b62-4da8-b91c-c07f71a3bcc7/VirajDoshiLogo2.png?v=1678059876222">
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="/manifest.webmanifest" />
+  
+  <!-- iOS support -->
+  <!-- <link rel="apple-touch-icon" href="images/icons/icon-72x72.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-96x96.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-128x128.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-144x144.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-152x152.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-192x192.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-384x384.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-512x512.png" />
+  <meta name="apple-mobile-web-app-status-bar" content="#ff9900" />
+  <meta name="theme-color" content="#ff9900" /> -->
+  
+  <title>Viraj - Projects</title>
+  
+</head>
+<!-- In the nav tag we already have a navbar class why do we have to put same id? -->
+<body data-bs-theme="black" class="sections" style="overflow-x: hidden">
+  <div id="">
+    <a class="row d-block" href="/" id="logo2">Viraj Doshi</a>
+    <div style="text-align: center; vertical-align: middle;">
+      <h2>Woah Woah Woahhhhhhhh</h2>
+      <p>You can't view this page offline yet</p>
+      <a href="/">go back</a>
+    </div>
+  </div>
+  <button class="btn btn-floating" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+  <script src="../js/utilities.js"></script>
+  <script>
+    function updateColor() {
+      let value = getCookie("color");
+      if (value == null) {
+        value = "#ff9900";
+        setCookie("color", "#ff9900");
+      }
+      document.documentElement.style.setProperty("--primary", value);
+    }
+    
+    window.onload = function() {
+      // if you want to remove loader on load then uncomment below line
+      // document.getElementById("loader-wrapper").style.display = "none";
+      // setTimeout(() => {
+      //   document.getElementById("loader-wrapper").style.display = "none";
+      // }, 1900)
+      updateColor();
+      if(getCookie("mode") == 1) {
+        // whiteout();
+        document.documentElement.style.setProperty("--secondary", "#ffffff");
+        document.getElementsByTagName("body")[0].setAttribute('data-bs-theme', 'white');
+        // setCookie("mode", 1);
+        // theme.checked = false;
+      } else if (getCookie("mode") == 0) {
+        // blackout();
+        document.documentElement.style.setProperty("--secondary", "#000000");
+        document.getElementsByTagName("body")[0].setAttribute('data-bs-theme', 'black');
+        // setCookie("mode", 0)
+        // theme.checked = true;
+      }
+    }
+  </script>
+</body>
+</html>

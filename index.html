@@ -1,26 +1,1107 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Viraj Doshi</title>
-</head>
+<!-- 
+1. Add FIDO Auth
+2. Add google ads
+3. 
+ -->
 
-<body>
-	<p>my website is - <a href='https://virajdoshi.glitch.me/'>HERE</a></p>
-	<p>
-		I am using glitch because github pages doesn't allow using servers. It has to be a
-		static website
-	</p>
-	<script>
-		setInterval(async () => {
-        			const url = "https://virajdoshi.glitch.me/qwerty"
-        			const result = await fetch(url, {
-            			method: "GET",
-            			headers: {
-             			 "Content-Type": "application/json",
-           		 	},
-         			}).then((res) => res.json());
-       			console.log(result);
-     		}, 3000) //this is 5 mins
-	</script>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <!-- I am using tm78 account for google analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-825V9LPDTK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-825V9LPDTK");
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5040047427202153" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ff9900"/>
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="black"/>
+    <link rel="canonical" href="https://virajdoshi.glitch.me/">
+    <meta name="author" content="Viraj">
+    <meta name="google-adsense-account" content="ca-pub-5040047427202153">
+    
+    <title>Viraj Doshi</title>
+    
+    <meta name="description" content="Viraj Doshi Portfolio website. This is my portfolio website, it showcases all my skills, projects & experiences. Download my resume & contact"/>
+    <meta name="keywords" content="Viraj Doshi, Hire, Job, Internship, Resume, Portfolio, Developer, VirajDoshi, Software, About, Skills, Projects, Experience, Contact, Website">
+    <meta name="title" content="Viraj Doshi Portfolio">
+    <meta property="og:title" content="Viraj Doshi Portfolio">
+    <meta property="og:site_name" content="Viraj Doshi">
+    <meta property="og:url" content="https://virajdoshi.glitch.me/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="/css/index.css" />
+    <!-- Bottstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <!-- animate on scroll library -->
+    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /> -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded&display=swap" rel="stylesheet"/>
+
+    <!-- my favicon -->
+    <link rel="icon" href="https://cdn.glitch.global/2d4882ca-9b62-4da8-b91c-c07f71a3bcc7/VirajDoshiLogo2.png?v=1678059876222"/>
+
+    <!-- PWA manifest -->
+    <link rel="manifest" href="./manifest.webmanifest" />
+
+    <!-- iOS support -->
+    <!-- <link rel="apple-touch-icon" href="images/icons/icon-72x72.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-96x96.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-128x128.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-144x144.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-152x152.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-192x192.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-384x384.png" />
+  <link rel="apple-touch-icon" href="images/icons/icon-512x512.png" />
+  <meta name="apple-mobile-web-app-status-bar" content="#ff9900" />
+  <meta name="theme-color" content="#ff9900" /> -->
+  </head>
+  <body data-bs-theme="black" style="overflow-x: hidden">
+    <div id="root"></div>
+    <div id="home-nav">
+      <a class="row d-lg-block d-sm-none" href="/" id="logo2">Viraj Doshi</a>
+      <nav class="navbar sticky-top navbar-expand-lg" id="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand d-md-block d-lg-none" href="/" id="logo">Viraj</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span><i class="fa-solid fa-bars" id="ham" style="color: white"></i></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <!-- I added current instead of active here because with active 
+              it doesnt make this button colored for some reason -->
+                <a class="nav-link active" aria-current="page" href="#home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#skills">Skills</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#projects">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#experience">Experience</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="#activities">Activities</a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact</a>
+              </li>
+              <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li> -->
+            </ul>
+            <div class="form-check form-switch">
+<!--               <label style="display: none" for="darkmode">Switch</label> -->
+              <input checked class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="darkmode"/>
+              <!--             <label class="form-check-label" for="flexSwitchCheckDefault">Mode</label> -->
+            </div>
+            <form class="d-flex" role="search">
+              <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+              <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+              <button id="btncv">Download CV</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+      <section id="home">
+        <div class="content">
+          <h5>Hello</h5>
+          <h3>My name is <span>Viraj Doshi</span></h3>
+          <h2 class="changecontent"><span> I'm a </span></h2>
+          <button class="darkbtn" id="btn1">HIRE ME</button>
+        </div>
+        <!-- <div class="img">
+        <img src="./assets/images/me.png" alt="Viraj Doshi">
+      </div> -->
+      </section>
+    </div>
+
+    <!-- change this to something like in this website -->
+    <!-- https://brittanychiang.com/#about -->
+    <main>
+      <section id="about" class="sections">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 py-3">
+            <div class="card">
+              <img id="self" src="https://cdn.glitch.global/4e6df72e-2aca-481b-a11d-a2b808a5d1d7/VirajDoshi.webp?v=1677108369174" alt="Viraj Doshi" width="100%" height="100%" />
+            </div>
+          </div>
+          <div class="col-md-8 py-3">
+            <h1 class="section-title mb-4">About Me</h1>
+            <p>
+              I am a
+              <span class="focus one-word">Software Engineer</span> (no, I won't
+              fix your printer or hack your girlfriends instagram for you)
+              currently living in Jersey City, New Jersey and I love torturing my
+              laptop. I specialize in
+              <span class="focus">Web and Mobile Application Development</span>
+              but I also have experience in many other fields like
+              <u>DevOps</u>, <u>IOT</u>, <u>Game Development</u> and
+              <u>Cyber Security</u>. I am always ready for any interesting
+              projects you might have
+            </p>
+            <p>
+              I am currently pursuing my Master's in
+              <span class="one-word">
+                <u>
+                  <a href="https://njit.edu" target="_blank">New Jersey Institute of Technology (NJIT)</a>
+                </u>
+              </span>
+              as a Software Engineering major. In NJIT I am learning
+              Software Project Management, Requirements Engineering, Artificial
+              Intelligence and Software Architecture. I am
+              <span class="focus one-word">looking for full time opportunities.</span>
+<!--               <span class="focus one-word">full time opportunities.</span> -->
+            </p>
+            <p>
+              <!-- How about we first start with a nice dinner? :) -->
+              Also I like playing volleyball
+            </p>
+            <button class="darkbtn" id="btncv2">DOWNLOAD CV</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section id="skills" class="sections">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 py-3">
+            <h1 class="section-title mb-4">Skills</h1>
+            <p>
+              My skills mainly come from the experience I have had in this field
+              and my personal projects. I am a mostly self taught (well college
+              doesn't teach everything, does it?) and a fast learner. I have
+              made responsive, fast and robust web and mobile apps with best
+              practices. Apart from my technical skills I also have knowledge in
+              Robotics and 3D Animation & Modeling
+            </p>
+<!--             <p>
+              <span class="focus">Why should you hire me?</span>
+              Well anyone can learn a framework / library and make you a website
+              / app in no time but I belive that building things from scratch
+              has its own advantages and that's what I bring to the table that
+              most won't. I am comfortable with both researching and building up
+              softwares from ground up and using a library. So, I fit, in any
+              requirement you might have
+            </p> -->
+          </div>
+          <div id="skillSphere" class="d-none d-md-block col-lg-5 col-md-12 py-3" data-aos="fade-zoom-in" data-aos-duration="3000">
+            <span class="Sphere"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section id="projects" class="sections">
+      <div class="container">
+        <div class="row">
+          <div id="all_projects" class="col">
+            <h1 class="section-title">Projects</h1>
+
+            <div class="row addRow">
+              <div style="width: 20%" class="d-none d-lg-block"></div>
+              <div class="proj-card" style="width: 80%; margin-top: 100px">
+                <div class="proj-img-right" style="top: 0; left: 0">
+                  <img class="img-right" style="background-color: red; object-fit: cover" src="https://cdn.glitch.global/2d4882ca-9b62-4da8-b91c-c07f71a3bcc7/createSurvey?v=1687618209636" alt="proj1" height="100%" width="122%"/>
+                </div>
+                <div class="project-right" style="left: 40%">
+                  <h4 class="proj-title-right">
+                    <u><a class="focus" target="_blank" href="https://create-survey.glitch.me/"><i class="fa-solid fa-link"></i> Google Forms Clone</a></u>
+                  </h4>
+                  <p class="proj-des-right" style="text-align: end">
+                    A web based google form clone that allows users to make
+                    questions with single and multiple type answers along with
+                    text answers. The user who created the form can view all the
+                    responses in a seperate page like in google forms
+                  </p>
+                  <p class="tech-stack-right" style="text-align: end">
+                    Node.js MongoDB JavaScript HTML CSS
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="row addRow">
+              <div class="proj-card" style="width: 80%; margin-top: 100px">
+                <div class="proj-img-left" style="right: 0">
+                  <img style="background-color: red; object-fit: cover" src="https://cdn.glitch.global/2d4882ca-9b62-4da8-b91c-c07f71a3bcc7/ProjsPlaceHolder.png?v=1678245216695" alt="proj1" width="100%" height="100%" />
+                </div>
+                <div class="project-left" style="top: 0; left: 0">
+                  <h4 class="proj-title-left focus">
+                    <u>Womens Safety App</u>
+                  </h4>
+                  <p class="proj-des-left" style="text-align: start; max-width: 60%">
+                    A flutter app which lets users add emergency contacts. The
+                    user can then double press volumn button to send a message
+                    including their exact location to their emergency contacts
+                    without the need to open the app.
+                  </p>
+                  <p class="tech-stack-left">Flutter Android iOS VS-Code</p>
+                </div>
+              </div>
+              <div style="width: 20%" class="d-none d-lg-block"></div>
+            </div>
+            <div class="row addRow">
+              <div style="width: 20%" class="d-none d-lg-block"></div>
+              <div class="proj-card" style="width: 80%; margin-top: 100px">
+                <div class="proj-img-right" style="top: 0; left: 0">
+                  <img class="img-right" style="background-color: red; object-fit: cover" src="https://cdn.glitch.global/2d4882ca-9b62-4da8-b91c-c07f71a3bcc7/ProjsPlaceHolder.png?v=1678245216695" alt="proj1" width="122%" height="100%"/>
+                </div>
+                <div class="project-right" style="left: 40%">
+                  <h4 class="proj-title-right focus"><u>LinkTree Clone</u></h4>
+                  <p class="proj-des-right" style="text-align: end">
+                    A web based LinkTree Clone. LinkTree is a website that
+                    allows users to bring all of their links in a single
+                    location on the web. Links could include their social media
+                    handles, personal websites or basically any link they want.
+                  </p>
+                  <p class="tech-stack-right" style="text-align: end">
+                    Node.js Docker MongoDB JavaScript HTML CSS
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--           <div style="height: 100px"></div>
+          <div class="d-flex justify-content-center">
+            <a class="focus" href="https://virajdoshi.glitch.me/projects">See more projects ...</a>
+          </div> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section id="experience" class="sections">
+      <div class="container">
+        <h1 class="section-title mb-4">Experience</h1>
+        <div class="row">
+          <div class="col">
+            <div class="exp">
+              <h4 class="col-auto company">New Jersey Institute of Technology</h4>
+<!--               <div class="row justify-content-between">
+                <h4 class="col-auto">New Jersey Institute of Technology</h4>
+                <h5 class="col-auto">Dec 2022 - May 2023</h5>
+              </div> -->
+              <div class="row justify-content-between">
+                <p class="col-auto role">Conference Manager</p>
+                <p class="col-auto">May 2023 - Aug 2023</p>
+              </div>
+              <ul style="list-style-type: disc">
+                <li>
+                  Supervised 7 assistants, optimizing task allocation
+                  and execution for efficient operations
+                </li>
+                <li>
+                  Ensured precise payroll management, maintaining accurate
+                  compensation records for the team.
+                </li>
+                <li>
+                  Collaborated with NJIT's housing department, administrative
+                  staff, and public safety to streamline conference
+                  management processes.
+                </li>
+              </ul>
+              <div class="vrtcl_line" style="height: 50px"></div>
+              <div class="row justify-content-between">
+                <p class="col-auto role">Desk Operations Associate</p>
+                <p class="col-auto">Dec 2022 - May 2023</p>
+              </div>
+              <ul style="list-style-type: disc">
+                <li>
+                  Corresponded with tier 2 support escalation for over 100 daily
+                  customers and stakeholders
+                </li>
+                <li>
+                  Endorsed and implemented guided procedure for public safety
+                  and customer issues
+                </li>
+                <li>
+                  Coordinated mailing operating procedure and logistics to
+                  conduct daily operations efficiently
+                </li>
+              </ul>
+              <pre>Skills: Management, Customer Relations</pre>
+            </div>
+            <div class="exp">
+              <h4 class="col-auto company">Upcloud Technologies</h4>
+<!--               <div class="row justify-content-between">
+                <h4 class="col-auto">Upcloud Technologies</h4>
+                <h5 class="col-auto">Sep 2019 - Jun 2020</h5>
+              </div> -->
+              <div class="row justify-content-between">
+                <p class="col-auto role">Lead Software Developer</p>
+                <p class="col-auto">Sep 2020 - Sep 2021</p>
+              </div>
+              <ul style="list-style-type: disc">
+                <li>
+                  Developed the iOS version of the app for a startup company
+                  using Flutter and SwiftUI resulting in significantly improved
+                  user experience for iOS users of the app.
+                </li>
+                <li>
+                  Enhanced scalability of the app to support a concurrent user
+                  base of over 100,000 users by implementing MicroServices Architecture.
+                </li>
+                <li>
+                  Assisted the design team with the Doctor and Patient app
+                  making it more user-friendly and intuitive using Figma,
+                  resulting in 16% increase in task completion rate and
+                  reducing the average time on each task by 10 seconds.
+                </li>
+                <li>
+                  Mentored 10+ new interns by conducting code reviews, leading
+                  to 40% reduction in frontend and backend code defects
+                  resulting in faster development.
+                </li>
+<!--                 <li>
+                  Pages: Login, sign-up, querying and resolving locations of
+                  customers registered with the platform (iOS & android)
+                </li> -->
+              </ul>
+              <pre>
+Skills: Project Management, Flutter, Dart, JavaScript, Python, JSON, MongoDB, Heroku</pre
+              >
+            </div>
+            <div class="exp">
+              <h4 class="col-auto company">K.J. Somaiya College of Engineering</h4>
+<!--               <div class="row justify-content-between">
+                <h4 class="col-auto">K.J. Somaiya College of Engineering</h4>
+                <h5 class="col-auto">Jun 2019 - Feb 2020</h5>
+              </div> -->
+              <div class="row justify-content-between">
+                <p class="col-auto role">Embedded Software Engineer</p>
+                <p class="col-auto">Jun 2019 - Feb 2020</p>
+              </div>
+              <ul style="list-style-type: disc">
+                <li>
+                  Worked with various microcontrollers & boards like Arduino,
+                  ATMega, and STM series along with sensors like light, ultrasound,
+                  gyroscope and lidar.
+                </li>
+                <li>
+                  Created 2 functioning, fast and precise RC bots reaching speed of upto
+                  30 miles/hr with a team of 25 students in teams like electrical,
+                  mechanical, software simulation and PR
+                </li>
+                <li>
+                  Volunteered in making simulations of various bot movements and function
+                  in Blender and Matlab
+                </li>
+                <li>
+                  Conducted a 2 day workshop teaching robotics to over 150 students and
+                  successfully helping them create their own first autonomous obstacle
+                  avoidance robot
+                </li>
+              </ul>
+              <pre>Skills: Embedded Software, Arduino, ATMega, STM32, Sensors, Strategic Planning, Financial Planning, Educational Seminars, Conference Speaking, Public Speaking, Teamwork, Team Coordination</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+      
+      <section id="activities" class="sections">
+        <div class="container">
+          <h1 class="section-title mb-4">Activities</h1>
+          <ul style="list-style-type: disc">
+            <li>
+              <div class="exp">
+                <div class="row justify-content-between">
+                  <h4 class="col-auto">New Jersey Institute of Technology</h4>
+                  <h5 class="col-auto">Jan 2023 - May 2023</h5>
+                </div>
+                <p>Reslife - Resident Hall Association (RHA) Treasurer</p>
+              </div>
+            </li>
+            <li>
+              <div class="exp">
+                <div class="row justify-content-between">
+                  <h4 class="col-auto">K.J. Somaiya College of Engineering</h4>
+                  <h5 class="col-auto">Nov 2019</h5>
+                </div>
+                <p>Robotics Worshop</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="contact" class="sections">
+      <div class="container">
+        <div class="hr">
+          <div class="row">
+            <div class="col-lg-7 py-3">
+              <h1 class="section-title">Contact Me</h1>
+              <p>Lets chat! Write me a message. I'll try to respond quickly</p>
+              <form action="" id="ctcForm">
+                <input type="text" name="name" id="name" autocomplete="on" placeholder="Your Name"/>
+                <br />
+                <input id="email" name="email" autocomplete="on" maxlength="64" placeholder="Your Email" />
+                <textarea name="message" id="message" cols="50" rows="5" autocomplete="on" placeholder="Message"></textarea>
+                <button id="btncontact" autocomplete="on" type="submit">Send</button>
+              </form>
+            </div>
+            <!--  -->
+            <div class="col-lg-5 py-3">
+              <h1 class="section-title">Info</h1>
+              <p>You know how to reach me now ;)</p>
+              <i class="fa-solid fa-envelope" style="margin-right: 12px">
+                <span>
+                  <a href="mailto:vd343@njit.edu" target="_blank">vd343@njit.edu</a>
+                </span>
+              </i>
+              <i class="fa-solid fa-envelope">
+                <span>
+                  <a href="mailto:virajdoshi11@gmail.com" target="_blank">virajdoshi11@gmail.com</a>
+                </span>
+              </i>
+              <hr />
+              <i class="fa-solid fa-phone"
+                ><span><a href="tel:+18628001675"> +1 8628001675</a></span></i
+              >
+              <hr />
+              <i class="fa-solid fa-house"><span> Newark, NJ 07103</span></i>
+              <hr />
+
+              <div class="social-links">
+                <a
+                  aria-label="Linkedin"
+                  href="https://linkedin.com/in/viraj-doshi-04b212189/"
+                  ><i
+                    style="font-size: 32px; margin-right: 5px"
+                    class="fa-brands fa-linkedin"
+                  ></i
+                ></a>
+                <a
+                  aria-label="StackOverflow"
+                  href="https://stackoverflow.com/users/14449776/viraj-d"
+                  ><i
+                    style="font-size: 32px; margin-right: 5px"
+                    class="fa-brands fa-stack-overflow"
+                  ></i
+                ></a>
+                <a aria-label="Github" href="https://github.com/virajdoshi11"
+                  ><i
+                    style="font-size: 32px; margin-right: 5px"
+                    class="fa-brands fa-github"
+                  ></i
+                ></a>
+                <a
+                  aria-label="Instagram"
+                  href="https://www.instagram.com/viraj.7/"
+                  ><i
+                    style="font-size: 32px; margin-right: 5px"
+                    class="fa-brands fa-instagram"
+                  ></i
+                ></a>
+                <a
+                  aria-label="Facebook"
+                  href="https://www.facebook.com/viraj.doshi.99/"
+                  ><i
+                    style="font-size: 32px; margin-right: 5px"
+                    class="fa-brands fa-facebook"
+                  ></i
+                ></a>
+              </div>
+              <!-- <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="dark" data-type="HORIZONTAL" data-vanity="viraj-doshi-04b212189" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/viraj-doshi-04b212189?trk=profile-badge" target="_blank">Viraj Doshi</a></div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </main>
+
+    <div class="footer">
+      <p>Made with ❤️</p>
+    </div>
+    <div id="snackbar">Message sent</div>
+    
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+  <!-- Position it: -->
+  <!-- - `.toast-container` for spacing between toasts -->
+  <!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
+  <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
+      <div class="toast-container position-fixed top-0 end-0 p-3">
+
+        <!-- Then put toasts within -->
+        <div id="liveToast" class="toast hide bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body"></div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+
+        <div id="installToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto">Viraj Doshi</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            Install my website as an app on your device
+            <div class="mt-2 pt-2 border-top">
+              <button id="install" type="button" class="btn btn-primary btn-sm">Install</button>
+              <input type="checkbox" id="showInstall" name="showInstall"/>
+              <label for="showInstall">Don't show again</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--     <div class="position-fixed top-0 end-0 p-3" style="z-index: 9999999999">
+      <div id="liveToast" class="toast hide bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body"></div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div> -->
+    
+<!--     <div class="position-fixed top-0 middle-0 p-3" style="z-index: 9999999999">
+      <div id="installToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+          Install my website as an app on your device
+          <div class="mt-2 pt-2 border-top">
+            <button id="install" type="button" class="btn btn-primary btn-sm">Install</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- <img src="https://forthebadge.com/images/badges/built-with-love.svg" alt=""> -->
+
+    <!-- <input class="btn btn-floating" id="colorPicker" type="color" value="#1a75aa"> -->
+    <!-- <div id="color_front" class="colorPicker" style="border-radius: 50%; width: 30px; height: 30px; background-color: #1a75aa"></div> -->
+    <div style="border: 2px solid black; border-radius: 5px; position: fixed; bottom: 62px; width: 225px; height: 54px; right: 12px;">
+      <!--     <p style="position: fixed; bottom: 62px; right: 62px">Select your color: </p> -->
+      <label for="colors" style="position: fixed; bottom: 78px; right: 62px">
+        Select your color:
+      </label>
+      <input class="colorPicker" name="colors" style="bottom: 70px; width: 38px; height: 38px" id="colors" type="color" value="#ff9900"/>
+    </div>
+
+    <button class="btn btn-floating" id="btn-back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <div id="loader-wrapper">
+      <div id="loading">
+        <h1 data-text="Viraj Doshi" id="loader">Viraj Doshi</h1>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!-- TagCloud JS (for the 3D sphere in skills section) -->
+    <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
+    <!-- animate on scroll library -->
+    <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
+    <script src="/js/utilities.js"></script>
+    <script src="/js/index.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("./sw.js")
+          .then((reg) => console.log("Service worker registered", reg))
+          .catch((err) => console.log("Sw not registered", err));
+      }
+    </script>
+    <script>
+      var download1 = document.getElementById("btncv");
+      var download2 = document.getElementById("btncv2");
+      var hireMe = document.getElementById("btn1");
+
+      download1.addEventListener("click", () => {
+        window.open("./VirajDoshiResume.html");
+      });
+      download2.addEventListener("click", () => {
+        window.open("./VirajDoshiResume.html");
+      });
+      hireMe.addEventListener("click", () => {
+        window.open("#contact", "_self");
+        document.getElementById("message").value = "We wanna hire you !!!";
+      });
+    </script>
+    <!-- <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script> -->
+    <script>
+      gtag('event', 'page_view', {
+      'send_to': 'G-825V9LPDTK',
+      'event_callback': function() {
+        var numUsers = gtag('get', 'users');
+        console.log('Number of users visited: ' + numUsers);
+      }
+    });
+    </script>
+    <script>
+      // var customColorPicker = document.getElementById("color_front");
+      var colorPicker = document.getElementById("colors");
+      var sphere = document.getElementsByClassName("Sphere")[0];
+      var install = document.getElementById("installToast");
+      
+      function validateEmail(email) {
+        return String(email)
+          .toLowerCase()
+          .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          );
+      }
+
+      var ctcForm = document.getElementById("ctcForm");
+      var filled = true;
+      ctcForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        filled = true;
+
+        var name = document.getElementById("name");
+        var nameVal = name.value;
+        var email = document.getElementById("email");
+        var emailVal = email.value;
+        var msg = document.getElementById("message");
+        var msgVal = msg.value;
+        const url = "https://virajdoshi.glitch.me/";
+
+        if (nameVal == "") {
+          shakeElement(name);
+          filled = false;
+        }
+        if (emailVal == "" || !validateEmail(emailVal)) {
+          shakeElement(email);
+          filled = false;
+        }
+
+        if (filled) {
+          const result = await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              nameVal,
+              emailVal,
+              msgVal,
+            }),
+          }).then((res) => res.json());
+
+          if ((result.status == "ok")) {
+            ctcForm.reset();
+            showConfirmation(result.status);
+          } else if(result.status == "emailError") {
+            showConfirmation(result.status);
+          } else if(result.status == "undefined") {
+            showConfirmation(result.status);
+          }
+        }
+      });
+
+      function updateColor() {
+        let value = getCookie("color");
+        // console.log(value);
+        if (value == null) {
+          value = "#ff9900";
+          setCookie("color", "#ff9900");
+        }
+        document.documentElement.style.setProperty("--primary", value);
+        sphere.style.color = value;
+        colorPicker.value =
+          value || document.documentElement.style.getPropertyValue("--primary");
+      }
+
+      colorPicker.addEventListener("input", () => {
+        var hsl = HexToHSL(colorPicker.value);
+        if (hsl.l < 30 || hsl.l > 80) {
+          document.documentElement.style.setProperty(
+            "--primary",
+            sphere.style.color
+          );
+          setCookie("color", sphere.style.color);
+          //here the sphere value is used as a previous value so that id the lightness
+          //id less than 10% then the previous value of the inout will be chosen
+        } else {
+          document.documentElement.style.setProperty(
+            "--primary",
+            colorPicker.value
+          );
+          sphere.style.color = colorPicker.value;
+          install.style.backgroundColor = colorPicker.value;
+          setCookie("color", colorPicker.value);
+        }
+      });
+
+      function HexToHSL(hex) {
+        var r = parseInt("" + hex[1] + hex[2], 16) / 255;
+        var g = parseInt("" + hex[3] + hex[4], 16) / 255;
+        var b = parseInt("" + hex[5] + hex[6], 16) / 255;
+
+        var max = Math.max(r, g, b);
+        var min = Math.min(r, g, b);
+        var h,
+          s,
+          l = (max + min) / 2;
+
+        if (max == min) {
+          h = s = 0; // achromatic
+        } else {
+          var d = max - min;
+          s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+          switch (max) {
+            case g:
+              h = (b - r) / d + 2;
+              break;
+            case b:
+              h = (r - g) / d + 4;
+              break;
+            case r:
+              h = (g - b) / d + (g < b ? 6 : 0);
+              break;
+          }
+          h /= 6;
+        }
+
+        s = s * 100;
+        s = Math.round(s);
+        l = l * 100;
+        l = Math.round(l);
+        h = Math.round(360 * h);
+
+        return { h, s, l };
+      }
+
+      window.onload = function () {
+        // AOS.init();
+        projectStyling();
+        // if you want to remove loader on load then uncomment below line
+        document.getElementById("loader-wrapper").style.display = "none";
+        // setTimeout(() => {
+        //   document.getElementById("loader-wrapper").style.display = "none";
+        // }, 1900)
+        updateColor();
+        var theme = document.getElementById("flexSwitchCheckDefault");
+        if (getCookie("mode") == 1) {
+          whiteout();
+          theme.checked = false;
+        } else if (getCookie("mode") == 0) {
+          blackout();
+          theme.checked = true;
+        }
+
+        var showInstallToast = getCookie("showInstallToast");
+        //if the user is loading the page for the very first timethen this cookie
+        //wont be available, hence a check for if this is null then set the cookie
+        if(showInstallToast == null) {
+          setCookie("showInstallToast", 1);
+        }
+        // show install toast only if the user didnt click the dont show again option
+        if(getCookie("showInstallToast") == 1) {
+          let deferredPrompt;
+          window.addEventListener("beforeinstallprompt", (e) => {
+            // Prevents the default mini-infobar or install dialog from appearing on mobile
+            e.preventDefault();
+            // Save the event because you'll need to trigger it later.
+            deferredPrompt = e;
+            // Show your customized install prompt for your PWA
+            // Your own UI doesn't have to be a single element, you
+            // can have buttons in different locations, or wait to prompt
+            // as part of a critical journey.
+            // showInAppInstallPromotion();
+            install.style.backgroundColor = document.documentElement.style.getPropertyValue("--primary");
+            install.className = install.className.replace("hide", "show");
+          
+            // alert("Install App?")
+          });
+        
+          var installBtn = document.getElementById("install");
+          installBtn.addEventListener("click", async () => {
+            deferredPrompt.prompt();
+            // Find out whether the user confirmed the installation or not
+            const { outcome } = await deferredPrompt.userChoice;
+            // The deferredPrompt can only be used once.
+            deferredPrompt = null;
+            // Act on the user's choice
+            if (outcome === 'accepted') {
+              console.log('User accepted the install prompt.');
+            } else if (outcome === 'dismissed') {
+              console.log('User dismissed the install prompt');
+            }
+          })
+        }
+
+        checkConnection();
+      };
+
+      handleConnectionStatus();
+
+      // TagCloud
+      const Texts = [
+        "Node.js",
+        "Flutter",
+        "JavaScript",
+        "Python",
+        "HTML",
+        "JSON",
+        "MongoDB",
+        "Github",
+        "Embedded",
+        "TypeScript",
+        "REST",
+        "BootStrap",
+        "Leadership",
+        "SDLC",
+        "Docker",
+        "Management",
+      ];
+
+      var tag = document.getElementsByClassName("tagcloud")[0];
+      var cards = document.getElementsByClassName("proj-card");
+      var rightProj = document.getElementsByClassName("project-right");
+      var leftProj = document.getElementsByClassName("project-left");
+      var addRow = document.getElementsByClassName("addRow");
+
+      var cardStyle = false; //to change the style of cards after md size mark (768px)
+
+      var removedSpace = false; //that 20% space in project cards
+
+      function projectStyling() {
+        if (window.screen.width < 992 && !removedSpace) {
+          for (let i = 0; i < cards.length; i++) {
+            // cards[i].style.width = "100%";
+            document.getElementsByClassName("proj-card")[i].style.width =
+              "100%";
+            removedSpace = true;
+            // console.log(cards[i].style.width);
+          }
+        } else if (window.screen.width >= 992 && removedSpace) {
+          for (let i = 0; i < cards.length; i++) {
+            document.getElementsByClassName("proj-card")[i].style.width = "80%";
+            removedSpace = false;
+            // cards[i].style.width = "80%";
+          }
+        }
+
+        if (window.screen.width < 768 && !cardStyle) {
+          cardStyle = true;
+          console.log(document.getElementsByClassName("proj-des-right")[0]);
+          console.log(document.getElementsByClassName("proj-des-right")[1]);
+          console.log(rightProj.length);
+          for (let i = 0; i < leftProj.length; i++) {
+            document.getElementsByClassName("proj-img-left")[i].style =
+              "width: 100%";
+            document.getElementsByClassName("project-left")[i].style = "";
+            document.getElementsByClassName("proj-des-left")[i].style = "";
+            document
+              .getElementsByClassName("proj-des-left")
+              [i].classList.add("proj-des-sm-left");
+            document.getElementsByClassName("proj-title-left")[i].style =
+              "text-align: center";
+            document.getElementsByClassName("tech-stack-left")[i].style =
+              "margin-left: 18px";
+          }
+          for (let i = 0; i < rightProj.length; i++) {
+            document.getElementsByClassName("img-right")[i].style.width =
+              "100%";
+            document.getElementsByClassName("proj-img-right")[i].style =
+              "width: 100%";
+            document.getElementsByClassName("project-right")[i].style = "";
+            document.getElementsByClassName("proj-des-right")[i].style = "";
+            document
+              .getElementsByClassName("proj-des-right")
+              [i].classList.add("proj-des-sm-right");
+            document.getElementsByClassName("proj-title-right")[i].style =
+              "text-align: center";
+            document.getElementsByClassName("tech-stack-right")[i].style =
+              "margin-left: 18px";
+          }
+          for (let i = 0; i < leftProj.length; i++) {
+            document
+              .getElementsByClassName("proj-des-sm-left")
+              [i].classList.remove("proj-des-left");
+          }
+          for (let i = 0; i < rightProj.length; i++) {
+            document
+              .getElementsByClassName("proj-des-sm-right")
+              [i].classList.remove("proj-des-right");
+          }
+          for (
+            let i = 3;
+            i < document.getElementById("all_projects").childNodes.length;
+            i++
+          ) {
+            if (i % 2 == 1) {
+              document
+                .getElementById("all_projects")
+                .childNodes[i].classList.remove("row");
+            }
+          }
+        } else if (window.screen.width >= 768 && cardStyle) {
+          // console.log(document.getElementById("all_projects").childNodes);
+          cardStyle = false;
+          for (let i = 0; i < leftProj.length; i++) {
+            document.getElementsByClassName("proj-img-left")[i].style =
+              "right: 0;";
+            document.getElementsByClassName("project-left")[i].style =
+              "top: 0; left: 0;";
+            document.getElementsByClassName("proj-des-sm-left")[i].style =
+              "text-align: start; max-width: 60%;";
+            document
+              .getElementsByClassName("proj-des-sm-left")
+              [i].classList.add("proj-des-left");
+            // document.getElementsByClassName("proj-des-sm-left")[i].classList.remove("proj-des-sm-left");
+            document.getElementsByClassName("proj-title-left")[i].style = "";
+            document.getElementsByClassName("tech-stack-left")[i].style = "";
+          }
+          for (let i = 0; i < rightProj.length; i++) {
+            document.getElementsByClassName("img-right")[i].style.width =
+              "122%";
+            document.getElementsByClassName("proj-img-right")[i].style =
+              "top: 0; left: 0;";
+            document.getElementsByClassName("project-right")[i].style =
+              "left: 40%;";
+            document.getElementsByClassName("proj-des-sm-right")[i].style =
+              "text-align: end;";
+            document
+              .getElementsByClassName("proj-des-sm-right")
+              [i].classList.add("proj-des-right");
+            // document.getElementsByClassName("proj-des-sm-right")[i].classList.remove("proj-des-sm-right");
+            document.getElementsByClassName("proj-title-right")[i].style = "";
+            document.getElementsByClassName("tech-stack-right")[i].style =
+              "text-align: end;";
+          }
+          //IDK why but adding zero here works and ading i in the above if condition works
+          for (let i = 0; i < leftProj.length; i++) {
+            document
+              .getElementsByClassName("proj-des-sm-left")[0]
+              .classList.remove("proj-des-sm-left");
+          }
+          for (let i = 0; i < rightProj.length; i++) {
+            document
+              .getElementsByClassName("proj-des-sm-right")[0]
+              .classList.remove("proj-des-sm-right");
+          }
+          for (let i = 0; i < addRow.length; i++) {
+            document.getElementsByClassName("addRow")[i].classList.add("row");
+          }
+        }
+      }
+
+      window.addEventListener("resize", () => {
+        //tagCloud
+        if (
+          window.screen.width <= 1300 &&
+          window.screen.width >= 992 &&
+          tagCloud.radius != 200
+        ) {
+          tagCloud.radius = 200;
+          document.getElementsByClassName("tagcloud")[0].style.width = "400px";
+          document.getElementsByClassName("tagcloud")[0].style.height = "400px";
+        } else if (window.screen.width > 1300 && tagCloud.radius != 250) {
+          tagCloud.radius = 250;
+          document.getElementsByClassName("tagcloud")[0].style.width = "500px";
+          document.getElementsByClassName("tagcloud")[0].style.height = "500px";
+        } else if (window.screen.width < 992 && tagCloud.radius != 300) {
+          tagCloud.radius = 300;
+          document.getElementsByClassName("tagcloud")[0].style.width = "600px";
+          document.getElementsByClassName("tagcloud")[0].style.height = "600px";
+        }
+        projectStyling();
+      });
+
+      function shakeElement(el) {
+        el.classList.add("rotateable");
+        el.style.marginLeft = "20px";
+
+        setTimeout(function () {
+          el.style.marginLeft = "-20px";
+          setTimeout(function () {
+            el.style.marginLeft = "5px";
+            setTimeout(() => {
+              el.style.marginLeft = "-5px";
+              setTimeout(() => {
+                el.style.marginLeft = "0px";
+              }, wiggletime);
+            }, wiggletime);
+          }, wiggletime);
+        }, wiggletime);
+
+        return true;
+      }
+
+      var tagCloud = TagCloud(".Sphere", Texts, {
+        //in pixels
+        radius:
+          window.screen.width > 1300
+            ? 250
+            : window.screen.width < 992
+            ? 300
+            : 200,
+        //animation speed: slow, normal, fast
+        maxSpeed: "fast",
+        initSpeed: "fast",
+        direction: 135,
+        //interaction with mouse or not
+        keep: false,
+      });
+
+      var color = "#ff9900";
+      sphere.style.color = color;
+
+      var a;
+      function myfunction() {
+        if (
+          navigator.userAgent.match(/Android/i) ||
+          navigator.userAgent.match(/webOS/i) ||
+          navigator.userAgent.match(/iPhone/i) ||
+          navigator.userAgent.match(/iPad/i) ||
+          navigator.userAgent.match(/iPod/i) ||
+          navigator.userAgent.match(/BlackBerry/i) ||
+          navigator.userAgent.match(/Windows Phone/i) || screen.width < 500
+        ) {
+          a = true;
+          document.getElementById("loader-wrapper").style.display = "none";
+        } else {
+          a = false;
+        }
+      }
+      myfunction();
+    </script>
+    <script>
+      // setInterval(async () => {
+      //   const url = "https://virajdoshi.glitch.me/qwerty"
+      //   const result = await fetch(url, {
+      //       method: "GET",
+      //       headers: {
+      //         "Content-Type": "application/json",
+      //       },
+      //     }).then((res) => res.json());
+      //   console.log(result);
+      // }, 300000)
+    </script>
+  </body>
 </html>
