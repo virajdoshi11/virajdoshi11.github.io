@@ -1,5 +1,5 @@
-const staticCache = "site-static-v2";
-const dynamicCache = "site-dynamic-v2";
+const staticCache = "site-static-v4";
+const dynamicCache = "site-dynamic-v4";
 
 //here each entry is the key to the value which will be the response of that key
 const assets = [
