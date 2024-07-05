@@ -1,0 +1,67 @@
+input:focus, textarea:focus, p:focus {
+  outline-width: 0;
+}
+
+#createBlogForm input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--primary);
+  border-left: 2px solid var(--primary);
+  color: var(--primary);
+  margin-top: 30px;
+}
+
+#createBlogForm textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--primary);
+  border-left: 2px solid var(--primary);
+  color: var(--primary);
+  margin-top: 20px
+}
+
+#createBlogForm label {
+  display: none
+}
+
+#btnBlog {
+  width: 50%;
+  height: 30px;
+  max-width: 350px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 5px;
+  margin-top: 30px;
+  transition: 0.4s ease;
+}
+#btnBlog:hover {
+  color: black;
+  background: var(--primary);
+}
+
+.blogTitle {
+  font-weight: 900;
+  font-size: 30px;
+}
+
+[contenteditable=true]:empty:before{
+  content: attr(placeholder);
+  pointer-events: none;
+  display: block; /* For Firefox */
+  color: grey;
+}
+
+p[contenteditable=true]:empty::before {
+  
+}
+
+.blog-content {
+  border-left: 2px solid var(--primary);
+}
+
+#content-list {
+  margin-top: 30px;
+}

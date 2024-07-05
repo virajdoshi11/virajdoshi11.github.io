@@ -52,3 +52,21 @@ function backToTop() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+
+function updateColor() {
+  let value = getCookie("color");
+  if (value == null) {
+    value = "#ff9900";
+    setCookie("color", "#ff9900");
+  }
+  document.documentElement.style.setProperty("--primary", value);
+}
+
+function dynamicTextArea(id) {
+  let txtarea = document.getElementById(id);
+
+  txtarea.addEventListener('input', () => {
+    txtarea.style.height = 'auto';
+    txtarea.style.height = txtarea.scrollHeight + "px"
+  })
+}

@@ -1,5 +1,5 @@
-const staticCache = "site-static-v4";
-const dynamicCache = "site-dynamic-v4";
+const staticCache = "site-static-v1";
+const dynamicCache = "site-dynamic-v1";
 
 //here each entry is the key to the value which will be the response of that key
 const assets = [
@@ -48,7 +48,7 @@ self.addEventListener("install", evt => {
       cache.addAll(assets);
     })
   );
-})
+});
 
 self.addEventListener("activate", evt => {
   // console.log("service worker activated");

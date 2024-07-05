@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("layouts/headTemplate") -%>
+  <link rel="stylesheet" href="../public/css/createBlog.css" />
+  
+  <title>Viraj - Create Blog</title>
+</head>
+  
+<!-- In the nav tag we already have a navbar class why do we have to put same id? -->
+<body data-bs-theme="black" class="sections" style="overflow-x: hidden">
+  <div id="">
+    <a class="row d-block" href="/" id="logo2">Viraj Doshi</a>
+    <div class="container" style="margin-top: 100px;">
+      <h1 class="section-title">Create Blog</h1>
+      <form id="createBlogForm" method="POST">
+        <div class="container">
+          <div class="col">
+            <div class="row">
+              <label class="col-auto" for="title">Blog Title</label>
+              <input required class="col blogTitle" type="text" id="title" maxlength="255" name="blogTitle" placeholder="Blog title" />
+            </div>
+            <div class="row">
+              <label class="col-auto" for="des">Blog Description</label>
+              <textarea required class="col" id="des" maxlength="400" name="blogDes" rows="3" cols="50" placeholder="Write a small description"></textarea>
+            </div>
+            <div class="row" id="content-list">
+              <div style="margin-top: 20px;" class="row">
+                <label class="col-auto" for="content">Blog Content</label>
+                <textarea required id="blog-content" class="col" name="blogContent" rows="5" cols="50" placeholder="Blog content"></textarea>
+              </div>
+              <!-- <p contenteditable="true" id="1" class="blog-content" placeholder="Enter blog content"></p> -->
+            </div>
+
+            <!-- dropdown for adding tags -->
+            <!-- <div class="row" id="tags">
+              <div style="font-size: 12px; padding: 5px; border-radius: 3px; background-color: var(--primary); color: var(--secondary)">JavaScript</div>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+              <select style="background-color: var(--secondary); color: var(--primary); border-left: 2px solid var(--primary); border-bottom: 2px solid var(--primary)">
+                <option></option>
+                <option>JavaScript</option>
+                <option>Web Dev</option>
+                <option>Mobile Dev</option>
+                <option>Full Stack</option>
+                <option>Experience</option>
+                <option>Progress</option>
+                <option>AWS</option>
+                <option>New Project</option>
+                <option>Learning</option>
+                <option>Knowledge Update</option>
+                <option>Basic</option>
+                <option>Intermediate</option>
+                <option>Advance</option>
+                <option>Python</option>
+                <option>AI/ML</option>
+                <option>Finance</option>
+                <option>Stocks</option>
+                <option>Investment</option>
+                <option>Inspiration</option>
+              </select>
+            </div> -->
+
+            <div class="row">
+              <button id="btnBlog" type="submit">Publish</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <button class="btn btn-floating" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+  <script src="../js/utilities.js"></script>
+  <script>
+    let content = document.getElementById("content-list");
+    const postUrl = "127.0.0.1:5000/blogs/create"
+
+    function enterEvent(e) {
+      console.log(e.keyCode);
+      if(e.keyCode == 13) { //Enter key was pressed
+        // newEditableP()
+      } else if(e.keyCode == 16 && e.keyCode == 13) { //shift and enter
+
+      } else if(e.keyCode == 8) { //backspace
+
+      }
+    }
+
+    function newEditableP() {
+      let lastChild = content.children[content.children.length - 1];
+      let newP = document.createElement("p");
+      newP.contenteditable = 'true';
+      newP.id = (parseInt(lastChild.id) + 1).toString();
+      newP.classList.add("blog-content");
+      newP.placeholder = "Enter blog contents"
+      
+      newP.addEventListener('keydown', enterEvent)
+
+      content.appendChild(newP)
+    }
+
+    window.onload = function() {
+      updateColor();
+
+      let initialPara = document.getElementById("1");
+      initialPara.addEventListener('keydown', enterEvent);
+
+      let submitBlog = document.getElementById("btnBlog");
+      let blogForm = document.getElementById("createBlogForm");
+
+      blogForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const blogTitle = document.getElementById("title").value;
+        const blogDes = document.getElementById("des").value;
+        const blogContent = document.getElementById("blog-content").value;
+
+        try {
+          let response = await fetch(postUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              blogTitle: blogTitle,
+              blogDes: blogDes,
+              blogContent: blogContent
+            })
+          });
+
+          console.log(response.json());
+
+        } catch(err) {
+          console.log("There was an error");
+          console.log(err);
+        }
+
+      });
+    }
+  </script>
+</body>
+</html>

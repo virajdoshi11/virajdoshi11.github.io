@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("layouts/headTemplate") -%>
+  <link rel="stylesheet" href="../public/css/createBlog.css" />
+  
+  <title>Viraj Doshi Blogs</title>
+</head>
+  
+<!-- In the nav tag we already have a navbar class why do we have to put same id? -->
+<body data-bs-theme="black" class="sections" style="overflow-x: hidden">
+  <div id="">
+    <a class="row d-block" href="/" id="logo2">Viraj Doshi</a>
+    <div class="container" style="margin-top: 100px;">
+      <h1 style="justify-content: center;" class="section-title"><%- blog.blogTitle %></h1>
+      <p class="mb-2"><%- blog.date.toLocaleDateString() %></p>
+      
+      <div id="blog-content">
+        <%- blog.blogContent %>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-floating" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+  <script src="../js/utilities.js"></script>
+</body>
+</html>

@@ -11,28 +11,52 @@
 //The above website appears first in the google search, just search bloxylibrary
 
 const express = require("express");
+const mongoose = require("mongoose");
 const nodemailer = require('nodemailer');
+const bodyParser = require("body-parser");
 const cors = require("cors");
+
+const blogRouter = require("./routes/blogRouter");
+
 require('dotenv').config()
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use((req, res, next) => {
-  res.header('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+//   next();
+// });
 
 app.use(express.json());
 app.use(cors({origin:'*'}))
 app.set("view engine", "ejs")
+// app.use(express.urlencoded({ extentded: false }));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use("/blogs", blogRouter)
 
 //http to https redirects
-app.enable('trust proxy');
-app.use((req,res,next) => {
-  if(req.secure) next()
-  else res.redirect('https://'+req.host+req.url)
-})
+// app.enable('trust proxy');
+// app.use((req,res,next) => {
+//   if(req.secure) next()
+//   else res.redirect('https://'+req.host+req.url)
+// })
+
+async function connectMongo() {
+  const uri = "mongodb+srv://virajdoshi11:" + process.env.MONGODB_PASS + "@blog.yhp88d1.mongodb.net/blogs?retryWrites=true&w=majority&appName=Blog";
+  console.log(uri)
+  try {
+    await mongoose.connect(uri)
+    .then(() => {
+      console.log('Connected to MongoDB');
+    });
+  } catch (err) {
+    console.log("There was an error")
+    console.log(err)
+  }
+}
+
+connectMongo()
 
 let mailTransporter = nodemailer.createTransport({
   service: 'gmail',
@@ -57,10 +81,6 @@ app.get("/", (req, res) => {
 
 app.get("/projects", (req, res) => {
   res.sendFile(__dirname + "/public/html/projects.html");
-});
-
-app.get("/blogs", (req, res) => {
-  res.sendFile(__dirname + "/public/html/blogs.html");
 });
 
 app.get("/ads", (req, res) => {
