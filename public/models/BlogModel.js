@@ -9,9 +9,9 @@ const blogModelSchema = new Schema({
     type: String,
     required: true
   },
-  dupBlogTitle: {
-    type: String,
-  },
+  // dupBlogTitle: {
+  //   type: String,
+  // },
   blogDes: {
     type: String,
     required: true
@@ -62,7 +62,7 @@ blogModelSchema.pre("validate", function preValidateMiddleware (next) {
       strict: true
     })
   } else if(this.blogTitle) {
-    this.slug = slugify(this.blogTitle, {
+    this.slug = slugify(this.blogTitle + "-" + this._id, {
       lower: true,
       strict: true
     })

@@ -23,7 +23,7 @@
       <div>
         <% allBlogs.forEach(blog => { %>
           <div class="blogCard clickable-card">
-            <a style="color: white; text-decoration: none;" href=<%- blog.slug %> >
+            <a style="color: white; text-decoration: none;" href="/blogs/<%= blog.slug %>" >
               <div class="row justify-content-between" style="margin-bottom: 8px">
                 <h4 class="col focus"><%- blog.blogTitle %></h4>
                 <p class="col-auto" style="font-size: 12px; color: grey;"><%- blog.date.toLocaleDateString() %></p>

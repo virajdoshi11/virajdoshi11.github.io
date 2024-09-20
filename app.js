@@ -9,6 +9,7 @@
 
 //Perfect SEO - https://bloxylibrary.glitch.me/
 //The above website appears first in the google search, just search bloxylibrary
+require('dotenv').config()
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -18,8 +19,6 @@ const cors = require("cors");
 
 const blogRouter = require("./routes/blogRouter");
 
-require('dotenv').config()
-
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -27,6 +26,8 @@ const PORT = process.env.PORT || 5000;
 //   res.header('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
 //   next();
 // });
+
+// in data visualization, and statistical models and data mining tools.
 
 app.use(express.json());
 app.use(cors({origin:'*'}))
@@ -66,6 +67,10 @@ let mailTransporter = nodemailer.createTransport({
   }
 });
 
+app.get("/star", (req, res) => {
+  res.sendFile(__dirname + "/public/html/star.html")
+})
+
 app.get("/netflix", (req, res) => {
   res.sendFile(__dirname + "/public/html/netflixIntro.html")
 })
@@ -75,7 +80,7 @@ app.get("/forms", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  console.log("This is the client IP: ", req.headers['sec-ch-ua']);
+  // console.log("This is the client IP: ", req.headers['sec-ch-ua']);
   res.sendFile(__dirname + "/index.html");
 });
 

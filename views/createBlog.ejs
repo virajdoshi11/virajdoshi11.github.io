@@ -33,6 +33,13 @@
             </div>
 
             <!-- dropdown for adding tags -->
+          <div class="row" style="background-color: var(--secondary); color: var(--primary); border-left: 2px solid var(--primary); border-bottom: 2px solid var(--primary); margin-top: 20px;">
+            <div class="col-auto" style="padding: 0; margin: 0">
+              <div class="row" style="margin-left: 5px; margin-right: 0;" id="tags"></div>
+            </div>
+            <input class="col" style="border: none; margin: 0;" placeholder="Tags for the blog" id="tag" name="tag" />
+            <div style="margin-top: 25px;" class="tagMenu"></div>
+          </div>
             <!-- <div class="row" id="tags">
               <div style="font-size: 12px; padding: 5px; border-radius: 3px; background-color: var(--primary); color: var(--secondary)">JavaScript</div>
             </div>
@@ -70,40 +77,87 @@
     </div>
   </div>
   <button class="btn btn-floating" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
-  <script src="../js/utilities.js"></script>
+  <script src="..public/js/utilities.js"></script>
   <script>
     let content = document.getElementById("content-list");
-    const postUrl = "127.0.0.1:5000/blogs/create"
+    const postUrl = "/blogs/create"
+    const tags = ["JavaScript", "Web", "Mobile", "FullStack", "Experience", "Progress",
+    "AWS", "New Project", "Learning", "Python", "Basic", "Intermidiate", "Advanced",
+    "React", "AI/ML", "Stocks", "Inspiration", "Investment", "Node", "Android", "iOS",
+    ];
+    let finalTags = [];
+    let style = getComputedStyle(document.body);
 
-    function enterEvent(e) {
-      console.log(e.keyCode);
-      if(e.keyCode == 13) { //Enter key was pressed
-        // newEditableP()
-      } else if(e.keyCode == 16 && e.keyCode == 13) { //shift and enter
+    let registeredTags = document.getElementById("tags");
+    let inputTag = document.getElementById("tag");
+    const tagMenu = document.getElementsByClassName("tagMenu")[0];
+    let tagInput = "";
+    
+    function createTagBtn(name) {
+      const tagDiv = document.createElement("div");
+      tagDiv.classList.add("col-auto");
+      tagDiv.style.fontSize = "12px";
+      tagDiv.style.padding = "2px 5px 2px 5px";
+      tagDiv.style.marginRight = "5px";
+      tagDiv.style.backgroundColor = style.getPropertyValue('--primary');
+      tagDiv.style.borderRadius = "5px";
+      tagDiv.style.color = style.getPropertyValue('--secondary');
+      tagDiv.innerText = name;
 
-      } else if(e.keyCode == 8) { //backspace
+      return tagDiv;
+    }
 
+    function createTagMenuBtn(name) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.style.padding = "2px 5px 2px 5px";
+      btn.style.marginRight = "5px";
+      btn.style.borderRadius = "5px";
+      btn.style.fontSize = "12px";
+
+      btn.innerText = name;
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        registeredTags.appendChild(createTagBtn(name));
+        tagMenu.style.display = "none";
+        inputTag.value = "";
+        tagInput = "";
+        finalTags.push(name);
+      })
+
+      return btn;
+    }
+
+    inputTag.addEventListener("input", (e) => {
+      if(tagMenu.children.length > 0) {
+        for(let i=0; i < tagMenu.children.length;) {
+          tagMenu.children[0].remove()
+        }
       }
-    }
 
-    function newEditableP() {
-      let lastChild = content.children[content.children.length - 1];
-      let newP = document.createElement("p");
-      newP.contenteditable = 'true';
-      newP.id = (parseInt(lastChild.id) + 1).toString();
-      newP.classList.add("blog-content");
-      newP.placeholder = "Enter blog contents"
-      
-      newP.addEventListener('keydown', enterEvent)
+      if(e.data != null) {
+        tagInput += e.data;
+      } else if(e.data == null) {
+        tagInput = tagInput.slice(0, -1);
+      }
+      let filteredTags = tags.filter((tag) => tag.toLowerCase().includes(tagInput));
+      for(let i = 0; i < filteredTags.length; i++) {
+        tagMenu.style.display = "block"
 
-      content.appendChild(newP)
-    }
+        tagMenu.appendChild(createTagMenuBtn(filteredTags[i]))
+      }
+      // for(let i=0; i<tags.length; i++) {
+      //   if(tags[i].toLowerCase().includes(e.data)) {
+      //     tagMenu.style.display = "block"
+
+      //     tagMenu.appendChild(createTagMenuBtn(tags[i]))
+      //   }
+      // }
+    });
 
     window.onload = function() {
-      updateColor();
-
-      let initialPara = document.getElementById("1");
-      initialPara.addEventListener('keydown', enterEvent);
+      // updateColor();
+      // FETCH REQUEST NOT WORKING
 
       let submitBlog = document.getElementById("btnBlog");
       let blogForm = document.getElementById("createBlogForm");
@@ -124,7 +178,8 @@
             body: JSON.stringify({
               blogTitle: blogTitle,
               blogDes: blogDes,
-              blogContent: blogContent
+              blogContent: blogContent,
+              tags: finalTags
             })
           });
 

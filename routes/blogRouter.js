@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router();
 const slugify = require("slugify");
+const mongoose = require("mongoose");
 
 const BlogModel = require("../public/models/BlogModel");
 
@@ -34,6 +35,9 @@ router.get("/create", (req, res) => {
 router.get("/:slug", async (req, res) => {
   //find the blog with this id and send that variable
   const blog = await BlogModel.findOne({ slug: req.params.slug });
+
+  // const id = new mongoose.Types.ObjectId(req.params.id)
+  // const blog = await BlogModel.findById(id)
   if(blog) {
     res.render("showBlog", {blog: blog});
   } else {
@@ -42,7 +46,7 @@ router.get("/:slug", async (req, res) => {
 });
 
 router.post("/create", async (req, res) => {
-  let title = req.body.blogTitle.toString();
+  const title = req.body.blogTitle.toString();
   const des = req.body.blogDes.toString();
   let dupBlogTitle;
 
@@ -50,18 +54,18 @@ router.post("/create", async (req, res) => {
     res.send({ status: "Error", msg: "title & description should be less than 255 & 400 character count respectively" })
   }
   
-  const dupSlug = await BlogModel.findOne({ blogTitle: title });
-  // console.log(dupSlug._id, dupSlug.blogTitle, dupSlug.slug);
-  if(dupSlug._id != "") {
-    dupBlogTitle = title + " " + dupSlug._id;
-    console.log(dupBlogTitle);
-  }
+  // const dupSlug = await BlogModel.findOne({ blogTitle: title });
+  // // console.log(dupSlug._id, dupSlug.blogTitle, dupSlug.slug);
+  // if(dupSlug) {
+  //   dupBlogTitle = title + " " + dupSlug._id;
+  //   console.log(dupBlogTitle);
+  // }
 
   try {
     const newBlog = new BlogModel({
       blogTitle: title,
-      dupBlogTitle: dupBlogTitle,
-      blogDes: des.slice(0, 400),
+      // dupBlogTitle: dupBlogTitle,
+      blogDes: des,
       blogContent: req.body.blogContent,
       tags: req.body.tags || [],
       // author: req.body.author,
@@ -70,7 +74,7 @@ router.post("/create", async (req, res) => {
 
     let savedBlog = await newBlog.save();
     // res.render("showBlog", {blog: savedBlog})
-    res.redirect("/blogs/" + savedBlog.slug);
+    res.redirect(savedBlog.slug);
   } catch (err) {
     console.log("There was an error while saving the blog");
     console.log(err);

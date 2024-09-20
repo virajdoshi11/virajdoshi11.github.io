@@ -1,5 +1,5 @@
-const staticCache = "site-static-v1";
-const dynamicCache = "site-dynamic-v1";
+const staticCache = "site-static-v3";
+const dynamicCache = "site-dynamic-v3";
 
 //here each entry is the key to the value which will be the response of that key
 const assets = [
@@ -22,6 +22,10 @@ const assets = [
   "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js",
   "https://cdn.glitch.global/2d4882ca-9b62-4da8-b91c-c07f71a3bcc7/VirajDoshiLogo2.png?v=1678059876222",
   "/html/fallback.html"
+];
+
+const dontCache = [
+  "/blogs"
 ];
 
 function limitCacheSize(name, size) {
@@ -72,11 +76,16 @@ self.addEventListener("fetch", evt => {
     caches.match(evt.request).then(cacheRes => {
       //if the request is something that we dont cache then cacheRes will be empty
       //in this case just complete the fetch request originally made by the user
+
       return cacheRes || fetch(evt.request).then(fetchRes => {
         
         //dont cache any chrome extension requests
         if(evt.request.url.indexOf("chrome-extension") != 0) {
+          // if (evt.request.url) {}
           console.log(evt.request.url, "This was not cached, caching now...");
+          if (evt.request.url.includes("http://127.0.0.1:5000/blogs")) {
+            return fetchRes
+          }
           return caches.open(dynamicCache).then(cache => {
             cache.put(evt.request.url, fetchRes.clone());
             limitCacheSize(dynamicCache, 20)
