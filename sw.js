@@ -25,7 +25,8 @@ const assets = [
 ];
 
 const dontCache = [
-  "/blogs"
+  "/blogs",
+  "/login"
 ];
 
 function limitCacheSize(name, size) {
@@ -83,9 +84,14 @@ self.addEventListener("fetch", evt => {
         if(evt.request.url.indexOf("chrome-extension") != 0) {
           // if (evt.request.url) {}
           console.log(evt.request.url, "This was not cached, caching now...");
-          if (evt.request.url.includes("http://127.0.0.1:5000/blogs")) {
-            return fetchRes
+          for(let i = 0; i < dontCache.length; i++) {
+            if(evt.request.url.includes(dontCache[i])) {
+              return fetchRes;
+            }
           }
+          // if (evt.request.url.includes("http://127.0.0.1:5000/blogs")) {
+          //   return fetchRes
+          // }
           return caches.open(dynamicCache).then(cache => {
             cache.put(evt.request.url, fetchRes.clone());
             limitCacheSize(dynamicCache, 20)

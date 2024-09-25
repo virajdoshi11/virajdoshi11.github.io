@@ -15,9 +15,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const nodemailer = require('nodemailer');
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const blogRouter = require("./routes/blogRouter");
+const authRouter = require("./routes/authRoutes")
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -31,10 +33,12 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors({origin:'*'}))
-app.set("view engine", "ejs")
+app.set("view engine", "ejs");
 // app.use(express.urlencoded({ extentded: false }));
 app.use(bodyParser.urlencoded({extended: true}));
-app.use("/blogs", blogRouter)
+app.use(cookieParser());
+app.use("/blogs", blogRouter);
+app.use("/login", authRouter)
 
 //http to https redirects
 // app.enable('trust proxy');
@@ -163,3 +167,66 @@ app.listen(PORT, () => {
 //   if(err) { console.log('Error Occurs'); }
 //   else { console.log('Email sent successfully'); }
 // });
+
+// To run node application in the background (i.e even after closing the terminal)
+/** Systemd
+ * Run the below command: 
+ * - sudo vim /etc/systemd/system/myapp.service
+ * 
+ * Paste the below code in the vim editor:
+ * [Unit]
+ * Description=Viraj Doshi Portfolio App
+ * After=network.target multi-user.target
+ * 
+ * [Service]
+ * user=ubuntu
+ * WorkingDirectory=/home/ubuntu/portfolio
+ * ExecStart=/usr/bin/npm start
+ * Restart=always
+ * StandardOutput=syslog
+ * StandardError=syslog
+ * SyslogIdentifier=viraj_doshi_portfolio_app_log
+ * 
+ * [Install]
+ * WantedBy=multi-user.target
+ * 
+ * Then run the following 3 commands in the terminal
+ * - sudo systemctl daemon-reload
+ * - sudo systemctl enable myapp.service
+ * - sudo systemctl start myapp.service
+ * 
+ * Now, you should see your code in the terminal with the command:
+ * - curl localhost:5000
+ * 
+ * Refresh the website and it should be running the website without running the npm start command
+ * If you update/change the code just update the file in your instance and then run the command
+ * - sudo systemctl restart myapp.service
+ * 
+ * Now to setup a reverse proxy (to access it over https rather than port 5000) install caddy
+ * (also look for nginx reverse proxy)
+ * Go to https://caddyserver.com/docs/install#debian-ubuntu-raspbian and copy the code under stable release
+ * This will install caddy and then you can run:
+ * - sudo systemctl start caddy
+ * 
+ * Now when you try running `curl localhost` it should give you the code for caddy homepage
+ * Also look at it by removing the port number and refreshing the page in browser
+ * 
+ * Now we want to forward traffic to our application instead of caddy homepage.
+ * To do this we want to edit the caddy file.
+ * Run the command below:
+ * - sudo vim /etc/caddy/Caddyfile
+ * 
+ * Here comment the line `root = /usr/share/caddy` and line with `file_server`
+ * Uncomment the line `reverse_proxy localhost:8080` and change the port to the port you have your server running on
+ * In this case change 8080 to 5000 and save it
+ * 
+ * now restart caddy with the command
+ * - sudo systemctl restart caddy
+ * 
+ * Now you should be able to see your application on that ip address in browser without the '5000' port (i.e on "/")
+ * (Be sure to remove the sutom tcp we added on the security group to remove access to port 5000)
+ * 
+ * Route 53 is DNS service offered by AWS
+ * You have to buy a domain from a 3rd party domain provider and connect it to route 53
+ * to start routing traffic to our services in aws
+ */

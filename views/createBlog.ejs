@@ -96,13 +96,12 @@
     function createTagBtn(name) {
       const tagDiv = document.createElement("div");
       tagDiv.classList.add("col-auto");
-      tagDiv.style.fontSize = "12px";
-      tagDiv.style.padding = "2px 5px 2px 5px";
-      tagDiv.style.marginRight = "5px";
-      tagDiv.style.backgroundColor = style.getPropertyValue('--primary');
-      tagDiv.style.borderRadius = "5px";
-      tagDiv.style.color = style.getPropertyValue('--secondary');
+      tagDiv.classList.add("tagBtn");
       tagDiv.innerText = name;
+
+      tagDiv.addEventListener("click", (e) => {
+        tagDiv.remove();
+      });
 
       return tagDiv;
     }

@@ -4,6 +4,7 @@ const slugify = require("slugify");
 const mongoose = require("mongoose");
 
 const BlogModel = require("../public/models/BlogModel");
+const { authenticateToken } = require("../controllers/authController")
 
 const articles = [
   {
@@ -28,8 +29,16 @@ router.get("/", async (req, res) => {
   res.render("blogs", {allBlogs: allBlogs});
 });
 
-router.get("/create", (req, res) => {
-  res.render('createBlog')
+router.get("/create", authenticateToken, (req, res) => {
+  console.log("This is the req.user variable:")
+  console.log(req.user);
+  
+  if(req.user.user.accessType == "admin") {
+    console.log("Admin access, you can create a blog");
+    return res.render('createBlog');
+  } else {
+    return res.send("You are not authorized to create a new blog. Please message me on +1 8628001675 to get access");
+  }
 });
 
 router.get("/:slug", async (req, res) => {
@@ -45,7 +54,7 @@ router.get("/:slug", async (req, res) => {
   }
 });
 
-router.post("/create", async (req, res) => {
+router.post("/create", authenticateToken, async (req, res) => {
   const title = req.body.blogTitle.toString();
   const des = req.body.blogDes.toString();
   let dupBlogTitle;
