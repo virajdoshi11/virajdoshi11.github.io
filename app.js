@@ -19,7 +19,8 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const blogRouter = require("./routes/blogRouter");
-const authRouter = require("./routes/authRoutes")
+const authRouter = require("./routes/authRoutes");
+const registerRouter = require("./routes/registerRoute");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -38,7 +39,8 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use("/blogs", blogRouter);
-app.use("/login", authRouter)
+app.use("/login", authRouter);
+app.use("/register", registerRouter);
 
 //http to https redirects
 // app.enable('trust proxy');
@@ -70,10 +72,6 @@ let mailTransporter = nodemailer.createTransport({
     pass: "" + process.env.GMAIL_APP_PASS
   }
 });
-
-app.get("/star", (req, res) => {
-  res.sendFile(__dirname + "/public/html/star.html")
-})
 
 app.get("/netflix", (req, res) => {
   res.sendFile(__dirname + "/public/html/netflixIntro.html")

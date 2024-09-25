@@ -73,6 +73,7 @@ router.post("/create", authenticateToken, async (req, res) => {
   try {
     const newBlog = new BlogModel({
       blogTitle: title,
+      author: req.user.user.name,
       // dupBlogTitle: dupBlogTitle,
       blogDes: des,
       blogContent: req.body.blogContent,

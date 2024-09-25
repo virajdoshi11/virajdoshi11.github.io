@@ -1,5 +1,5 @@
-const staticCache = "site-static-v22";
-const dynamicCache = "site-dynamic-v22";
+const staticCache = "site-static-v25";
+const dynamicCache = "site-dynamic-v25";
 
 //here each entry is the key to the value which will be the response of that key
 const assets = [
@@ -26,7 +26,8 @@ const assets = [
 
 const dontCache = [
   "/blogs",
-  "/login"
+  "/login",
+  "/register"
 ];
 
 function limitCacheSize(name, size) {

@@ -4,9 +4,9 @@
   <%- include("layouts/headTemplate") -%>
   <!-- <link rel="stylesheet" href="../public/css/createBlog.css" /> -->
   
-  <title>Viraj - Login</title>
+  <title>Viraj - Register</title>
   <style>
-    #loginForm {
+    #registerForm {
       margin-top: 30px;
     }
     .inputField {
@@ -21,7 +21,7 @@
     .inputField:focus {
       border-width: 0;
     }
-    #loginBtn {
+    #registerBtn {
       background-color: transparent;
       border: 2px solid var(--primary);
       color: var(--primary);
@@ -35,10 +35,14 @@
   <div id="">
     <a class="row d-block" href="/" id="logo2">Viraj Doshi</a>
     <div class="container" style="margin-top: 100px;">
-      <h1 class="section-title">Login</h1>
-      <form id="loginForm" method="POST">
+      <h1 class="section-title">Register/Sign up</h1>
+      <form id="registerForm" method="POST">
         <div class="container">
           <div class="col">
+            <div class="row">
+              <label class="col-auto" for="email">Name: </label>
+              <input required class="col inputField" type="name" id="name" maxlength="255" name="name" placeholder="Enter your display name" />
+            </div>
             <div class="row">
               <label class="col-auto" for="email">Email: </label>
               <input required class="col inputField" type="email" id="email" maxlength="255" name="email" placeholder="Enter your registered email" />
@@ -48,7 +52,7 @@
               <input required class="col inputField" type="password" id="password" maxlength="255" name="password" placeholder="Password" />
             </div>
             <div class="row">
-              <button id="loginBtn" type="submit">Login</button>
+              <button id="registerBtn" type="submit">Register</button>
             </div>
           </div>
         </div>
@@ -56,16 +60,17 @@
     </div>
   </div>
   <script>
-    const loginForm = document.getElementById("loginForm");
-    const postUrl = "/login";
+    const registerForm = document.getElementById("registerForm");
+    const postUrl = "/register";
 
-    loginForm.addEventListener("submit", async (e) => {
+    registerForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
+      const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
-      const userObj = { email: email, password: password };
+      const userObj = { name: name, email: email, password: password };
 
       const result = await fetch(postUrl, {
         method: 'POST',
@@ -76,13 +81,13 @@
       });
 
       if(result.status == 200) {
-        console.log("user logged in successfully!")
+        console.log("user registered successfully!")
 
         //we are redirecting from the client side and not from the server side using
         //res.redirect("/blogs/create") because after the response the server there is
         //javascript code on this page (`if(result.status == 200)`) which prevents the
         //redirection from server. See the commented line 34 in authController.js
-        window.location.href = "/blogs/create";
+        window.location.href = "/login";
       } else {
         console.log(result);
       }

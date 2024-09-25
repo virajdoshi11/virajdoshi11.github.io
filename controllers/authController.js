@@ -17,11 +17,16 @@ async function login_post(req, res) {
   console.log(user);
 
   if(user) {
+    if(user.password == password) {
+      console.log("The passwords were not encrypted");
+      const token = jwt.sign({ user: user }, process.env.JWT_SECRET);
+      res.cookie('jwtToken', token, { httpOnly: true });
+      res.redirect('/blogs/create');
+    } else {
     bcrypt.compare(password, user.password, (err, result) => {
       if(err) {
         console.log("Error comparing the passwords:", err);
         res.render('login', { msgType: "Error", message: err, reqType: "self" })
-        // res.json({ msgType: "Error", message: err });
       } else if(result) {
         console.log('Passwords match! User authenticated.', result);
         const token = jwt.sign({ user: user }, process.env.JWT_SECRET);
@@ -35,9 +40,9 @@ async function login_post(req, res) {
       } else {  
         console.log("Passwords don't match");
         res.status(401).render("login", { msgType: "Error", message: 'Invalid credentials', reqType: "self" })
-        // res.status(401).json({ msgType: "Error", message: 'Invalid credentials' })
       }
     });
+    }
   }
 
   // if(user) {
