@@ -6,8 +6,19 @@ const bcrypt = require('bcrypt');
 
 const saltRounds = 10;
 
+function checkToken(req) {
+  const token = req.cookies.jwtToken;
+  if (!token) {
+    return false
+  }
+  return true;
+}
+
 function login_get(req, res) {
   console.log("We are rendering login page")
+  if(checkToken(req)) {
+    return res.redirect("/blogs")
+  }
   res.render('login');
 }
 
@@ -17,12 +28,12 @@ async function login_post(req, res) {
   console.log(user);
 
   if(user) {
-    if(user.password == password) {
-      console.log("The passwords were not encrypted");
-      const token = jwt.sign({ user: user }, process.env.JWT_SECRET);
-      res.cookie('jwtToken', token, { httpOnly: true });
-      res.redirect('/blogs/create');
-    } else {
+    // if(user.password == password) {
+    //   console.log("The passwords were not encrypted");
+    //   const token = jwt.sign({ user: user }, process.env.JWT_SECRET);
+    //   res.cookie('jwtToken', token, { httpOnly: true });
+    //   res.redirect('/blogs/create');
+    // } else {
     bcrypt.compare(password, user.password, (err, result) => {
       if(err) {
         console.log("Error comparing the passwords:", err);
@@ -42,7 +53,7 @@ async function login_post(req, res) {
         res.status(401).render("login", { msgType: "Error", message: 'Invalid credentials', reqType: "self" })
       }
     });
-    }
+    // }
   }
 
   // if(user) {
@@ -61,10 +72,17 @@ function authenticateToken(req, res, next) {
   // const token = authHeader && authHeader.split(' ')[1];
   const token = req.cookies.jwtToken;
   console.log("This is the token", token)
-  if (!token) return res.status(401).render('login', { msgType: "Error", message: 'Unauthorized', reqType: "other" });
+  if (!token) {
+    console.log("redirecting to the login page because you are not signed in")
+    return res.status(401).redirect("/login")
+    //{ msgType: "Error", message: 'Unauthorized', reqType: "other" }
+  }
 
   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) return res.status(403).render('login', { msgType: "Error", message: 'Invalid token', reqType: "other" });
+    if (err) {
+      return res.status(403).redirect('/login');
+      // { msgType: "Error", message: 'Invalid token', reqType: "other" }
+    }
     if (user.user.accessType != "admin" && user.user.accessType != "editor") {
       // console.log("This is the accces type of the user: ", user.user.accessType)
       return res.status(401).json({ msgType: "Error", message: "You are not authorized to perform this request" });

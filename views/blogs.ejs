@@ -10,13 +10,32 @@
     .blogCard a {
       text-decoration: none
     }
+    .loginBtn {
+      position: absolute;
+      z-index: 99;
+      right: 14px;
+      top: 10px;
+      color: var(--secondary);
+      border-radius: 5px;
+      background-color: var(--primary);
+      text-decoration: none;
+    }
   </style>
   
 </head>
 <!-- In the nav tag we already have a navbar class why do we have to put same id? -->
 <body data-bs-theme="black" class="sections" style="overflow-x: hidden">
   <div id="">
-    <a class="row d-block" href="/" id="logo2">Viraj Doshi</a>
+    <% if(user) { %>
+      <a class="row d-block" href="/" id="logo2">Viraj Doshi</a>
+    <% } else { %>
+      <div class="row">
+        <a class="col" href="/" id="logo2" style="z-index: 1; position: relative;">Viraj Doshi</a>
+        <a href="/login" class="col-auto loginBtn">Login</a>
+      </div>
+    <% } %>
+    <!-- When the user is already logged in, use the below code -->
+    <!-- <a class="row d-block" href="/" id="logo2">Viraj Doshi</a> -->
     <div class="container" style="margin-top: 100px;">
       <h1 class="section-title">Blogs</h1>
 
@@ -28,6 +47,7 @@
                 <h4 class="col focus"><%- blog.blogTitle %></h4>
                 <p class="col-auto" style="font-size: 12px; color: grey;"><%- blog.date.toLocaleDateString() %></p>
               </div>
+              <p style="color: grey;"><%- blog.author %></p>
               <p><%- blog.blogDes %></p>
               <div style="margin: 14px 0 6px 0" class="row">
                 <% blog.tags.forEach(tag => { %>

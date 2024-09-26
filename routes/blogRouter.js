@@ -1,5 +1,8 @@
-const express = require("express")
+require('dotenv').config();
+
+const express = require("express");
 const router = express.Router();
+const jwt = require('jsonwebtoken');
 const slugify = require("slugify");
 const mongoose = require("mongoose");
 
@@ -26,7 +29,24 @@ const articles = [
 router.get("/", async (req, res) => {
   //get all the articles from db
   const allBlogs = await BlogModel.find({})
-  res.render("blogs", {allBlogs: allBlogs});
+
+  const token = req.cookies.jwtToken;
+  let isUser = false;
+  if(!token) {
+    isUser = false;
+    console.log("THERE IS NO TOKEN!!")
+  } else {
+    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+      if (err) {
+        isUser = false;
+        console.log("THERE WAS AN ERROR WITH THE TOKEN!!")
+      } else {
+        isUser = true;
+        console.log("THERE IS A TOKEN!!", isUser)
+      }
+    });
+  }
+  res.render("blogs", {allBlogs: allBlogs, user: isUser});
 });
 
 router.get("/create", authenticateToken, (req, res) => {

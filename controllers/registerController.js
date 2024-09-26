@@ -4,6 +4,8 @@ const UserModel = require("../public/models/UserModel");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
+const salt = await bcrypt.genSalt(10);
+
 function register_get(req, res) {
   res.render("register");
 }
@@ -20,8 +22,8 @@ async function register_post(req, res) {
         name: name,
         email: email,
         //encrypt the password here before saving to database
-        password: password,
-        accessType: "editor",
+        password: await bcrypt.hash(password, salt),
+        accessType: "viewer",
         blogList: []
       });
 
