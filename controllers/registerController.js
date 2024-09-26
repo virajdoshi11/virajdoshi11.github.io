@@ -4,8 +4,6 @@ const UserModel = require("../public/models/UserModel");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-const salt = await bcrypt.genSalt(10);
-
 function register_get(req, res) {
   res.render("register");
 }
@@ -13,6 +11,7 @@ function register_get(req, res) {
 async function register_post(req, res) {
   const { name, email, password } = req.body;
   const user = await UserModel.findOne({ email: email });
+  const salt = await bcrypt.genSalt(10);
 
   if(user) {
     res.render("register", { msgType: "Error", message: "A user already exists with this email" });
