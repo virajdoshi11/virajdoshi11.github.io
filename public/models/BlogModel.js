@@ -57,7 +57,7 @@ const blogModelSchema = new Schema({
 //regular functions inherit the context(`this` keyword) from the document being validated/saved.
 //On the other hand since the blog is not actually in this context, arrow functions
 //won't be able to get the context(`this` keyword).
-//Maybe arrow functions and regular functions are not same
+//Maybe arrow functions and regular functions are not same - yes they are different
 blogModelSchema.pre("validate", function preValidateMiddleware (next) {
 
   if(this.dupBlogTitle) {
