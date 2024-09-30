@@ -296,7 +296,7 @@
 @keyframes changetext {
   0% {content: "Team Lead"}
   20%{content: "Web Developer"}
-  40%{content: "MobiLE App Developer"}
+  40%{content: "Mobile App Developer"}
   60%{content: "Project Manager"}
   80%{content: "Full Stack Developer"}
   100%{content: "Team Lead"}
